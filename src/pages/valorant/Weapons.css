@@ -1,0 +1,109 @@
+﻿.weapons-page {
+    min-height: 100vh;
+    background: #080808;
+    padding: 130px 3rem 5rem;
+    color: #fff;
+}
+
+.weapons-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.weapons-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: 0.05em;
+    color: #fff;
+    margin: 0;
+}
+
+.weapons-count {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.weapons-filters {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.weapons-filter-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.weapons-filter-btn:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.weapons-filter-btn.active {
+    color: #ff4655;
+    border-color: rgba(255, 70, 85, 0.4);
+    background: rgba(255, 70, 85, 0.06);
+}
+
+.weapons-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.weapons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+@media (max-width: 1200px) {
+    .weapons-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .weapons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .weapons-page {
+        padding: 130px 1.5rem 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .weapons-page {
+        padding: 130px 1rem 3rem;
+    }
+
+    .weapons-grid {
+        grid-template-columns: 1fr;
+    }
+}

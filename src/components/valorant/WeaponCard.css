@@ -1,0 +1,183 @@
+﻿.weapon-card {
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.weapon-card:hover {
+    border-color: rgba(255, 70, 85, 0.25);
+    transform: translateY(-2px);
+}
+
+.weapon-card-type {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ff4655;
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(255, 70, 85, 0.04);
+}
+
+.weapon-card-image {
+    background: radial-gradient(ellipse at center, rgba(255, 70, 85, 0.05) 0%, transparent 70%);
+    padding: 2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+}
+
+.weapon-card-image img {
+    width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 20px rgba(255, 70, 85, 0.1));
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.weapon-card:hover .weapon-card-image img {
+    transform: scale(1.06) translateY(-4px);
+    filter: drop-shadow(0 8px 30px rgba(255, 70, 85, 0.2));
+}
+
+.weapon-card-body {
+    padding: 1.2rem 1.4rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+}
+
+.weapon-card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.weapon-card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+    margin: 0;
+    line-height: 1;
+}
+
+.weapon-card-firemode {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.25);
+    white-space: nowrap;
+}
+
+.weapon-card-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.35);
+    margin: 0;
+}
+
+.weapon-card-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.weapon-card-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.weapon-card-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.6rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.weapon-card-info-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.weapon-card-info-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+}
+
+.weapon-card-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.weapon-card-stats-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.2);
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.weapon-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.weapon-stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weapon-stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.weapon-stat-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.weapon-stat-bar {
+    height: 3px;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+}
+
+.weapon-stat-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff4655, #ff6b6b);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
