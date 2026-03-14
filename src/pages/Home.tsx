@@ -1,18 +1,20 @@
 ﻿import './Home.css'
+import { SiReact, SiTypescript, SiExpress, SiSupabase, SiVercel } from 'react-icons/si'
+import { TbDatabase } from 'react-icons/tb'
 
 const techs = [
-    {name: 'React', desc: 'Frontend SPA'},
-    {name: 'TypeScript', desc: 'Tipado estático'},
-    {name: 'Express', desc: 'API REST'},
-    {name: 'Drizzle', desc: 'ORM'},
-    {name: 'Supabase', desc: 'Base de datos & Storage'},
-    {name: 'Vercel', desc: 'Deploy'},
+    { name: 'React', desc: 'Frontend SPA', icon: <SiReact /> },
+    { name: 'TypeScript', desc: 'Tipado estático', icon: <SiTypescript /> },
+    { name: 'Express', desc: 'API REST', icon: <SiExpress /> },
+    { name: 'Drizzle', desc: 'ORM', icon: <TbDatabase /> },
+    { name: 'Supabase', desc: 'Base de datos & Storage', icon: <SiSupabase /> },
+    { name: 'Vercel', desc: 'Deploy', icon: <SiVercel /> },
 ]
 
 const links = [
-    {label: 'Repositorio Backend', url: 'https://github.com/tu-usuario/wikigames-api'},
-    {label: 'Repositorio Frontend', url: 'https://github.com/tu-usuario/wikigames-web'},
-    {label: 'Web en producción', url: 'https://wikigames.vercel.app'},
+    { label: 'Repositorio Backend', url: 'https://github.com/tu-usuario/wikigames-api' },
+    { label: 'Repositorio Frontend', url: 'https://github.com/tu-usuario/wikigames-web' },
+    { label: 'Web en producción', url: 'https://wikigames.vercel.app' },
 ]
 
 const Home = () => {
@@ -21,7 +23,7 @@ const Home = () => {
             <section className="home-hero">
                 <div className="home-hero-tag">Trabajo de Fin de Grado · 2025</div>
                 <h1 className="home-title">
-                    Videogame<br/>
+                    Videogame<br />
                     <span className="home-title-outline">Wiki & Database</span>
                 </h1>
                 <p className="home-desc">
@@ -36,6 +38,7 @@ const Home = () => {
                 <div className="home-tech-grid">
                     {techs.map((t) => (
                         <div className="home-tech-card" key={t.name}>
+                            <span className="home-tech-icon">{t.icon}</span>
                             <span className="home-tech-name">{t.name}</span>
                             <span className="home-tech-desc">{t.desc}</span>
                         </div>
@@ -48,16 +51,16 @@ const Home = () => {
                 <div className="home-links-grid">
                     {links.map((l) => (
                         <a
-                            className="home-link-card"
-                            key={l.label}
-                            href={l.url}
-                            target="_blank"
-                            rel="noreferrer"
+                        className="home-link-card"
+                        key={l.label}
+                        href={l.url}
+                        target="_blank"
+                        rel="noreferrer"
                         >
-                            <span className="home-link-label">{l.label}</span>
-                            <span className="home-link-arrow">↗</span>
+                        <span className="home-link-label">{l.label}</span>
+                        <span className="home-link-arrow">↗</span>
                         </a>
-                    ))}
+                        ))}
                 </div>
             </section>
         </main>

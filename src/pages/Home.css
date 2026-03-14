@@ -22,7 +22,7 @@
 
 .home-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(4rem, 10vw, 8rem);
+    font-size: clamp(3.5rem, 10vw, 8rem);
     line-height: 0.95;
     letter-spacing: 0.02em;
     margin: 0 0 2rem;
@@ -58,9 +58,10 @@
     margin: 0 0 1.5rem;
 }
 
+/* Tech grid */
 .home-tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     gap: 1px;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.06);
@@ -71,7 +72,7 @@
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
     transition: background 0.2s ease;
 }
 
@@ -79,19 +80,25 @@
     background: #111;
 }
 
+.home-tech-icon {
+    font-size: 1.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
 .home-tech-name {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     letter-spacing: 0.05em;
     color: #fff;
 }
 
 .home-tech-desc {
     font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: rgba(255, 255, 255, 0.35);
 }
 
+/* Links grid */
 .home-links-grid {
     display: flex;
     flex-direction: column;
@@ -135,4 +142,35 @@
 .home-link-card:hover .home-link-arrow {
     color: #fff;
     transform: translate(2px, -2px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .home-tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .home {
+        padding: 100px 1.5rem 4rem;
+    }
+
+    .home-tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .home {
+        padding: 90px 1rem 3rem;
+    }
+
+    .home-tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .home-hero {
+        margin-bottom: 4rem;
+    }
 }
