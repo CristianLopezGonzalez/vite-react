@@ -1,0 +1,175 @@
+﻿.role-card {
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    transition: border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.role-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ff4655, transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.role-card:hover {
+    border-color: rgba(255, 70, 85, 0.2);
+}
+
+.role-card:hover::before {
+    opacity: 1;
+}
+
+/* Header */
+.role-card-header {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.role-card-icon-wrapper {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.role-card-icon-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 70, 85, 0.2);
+    animation: role-pulse 3s ease-in-out infinite;
+}
+
+@keyframes role-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.08); opacity: 1; }
+}
+
+.role-card-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.role-card:hover .role-card-icon {
+    opacity: 1;
+}
+
+.role-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.role-card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+    margin: 0;
+    line-height: 1;
+}
+
+.role-card-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+}
+
+/* Divider */
+.role-card-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Agents */
+.role-card-agents-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.2);
+    display: block;
+    margin-bottom: 1.2rem;
+}
+
+.role-card-agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 1rem;
+}
+
+.role-card-agent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.role-card-agent-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: #111;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.role-card-agent:hover .role-card-agent-img {
+    border-color: rgba(255, 70, 85, 0.4);
+    transform: translateY(-3px);
+}
+
+.role-card-agent-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    filter: grayscale(30%);
+    transition: filter 0.2s ease;
+}
+
+.role-card-agent:hover .role-card-agent-img img {
+    filter: grayscale(0%);
+}
+
+.role-card-agent-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    text-align: center;
+    transition: color 0.2s ease;
+}
+
+.role-card-agent:hover .role-card-agent-name {
+    color: rgba(255, 255, 255, 0.7);
+}
