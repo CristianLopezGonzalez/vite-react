@@ -12,16 +12,15 @@ const techs = [
 ]
 
 const links = [
-    { label: 'Repositorio Backend', url: 'https://github.com/tu-usuario/wikigames-api' },
-    { label: 'Repositorio Frontend', url: 'https://github.com/tu-usuario/wikigames-web' },
-    { label: 'Web en producción', url: 'https://wikigames.vercel.app' },
+    { label: 'Repositorio Backend', url: 'https://github.com/CristianLopezGonzalez/express-js-on-vercel' },
+    { label: 'Repositorio Frontend', url: 'https://github.com/CristianLopezGonzalez/vite-react' },
 ]
 
 const Home = () => {
     return (
         <main className="home">
             <section className="home-hero">
-                <div className="home-hero-tag">Trabajo de Fin de Grado · 2025</div>
+                <div className="home-hero-tag">Trabajo de Fin de Grado Cristian Lopez Gonzalez · 2026</div>
                 <h1 className="home-title">
                     Videogame<br />
                     <span className="home-title-outline">Wiki & Database</span>
