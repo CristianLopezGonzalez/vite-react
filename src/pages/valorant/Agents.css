@@ -1,0 +1,61 @@
+﻿.agents-page {
+    min-height: 100vh;
+    background: #080808;
+    padding: 130px 3rem 5rem;
+    color: #fff;
+}
+
+.agents-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.agents-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: 0.05em;
+    color: #fff;
+    margin: 0;
+}
+
+.agents-count {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.agents-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.agents-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+@media (max-width: 768px) {
+    .agents-page {
+        padding: 130px 1.5rem 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .agents-page {
+        padding: 130px 1rem 3rem;
+    }
+}

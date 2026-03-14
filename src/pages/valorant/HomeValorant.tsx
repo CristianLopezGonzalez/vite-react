@@ -1,7 +1,12 @@
-﻿
+﻿import NavbarValorant from "../../components/valorant/NavbarValorant.tsx";
+
 const HomeValorant = () => {
     return (
-        <h5>Home valorant</h5>
+        <div>
+            <NavbarValorant />
+            <h5>Home valorant</h5>
+        </div>
+
     )
 }
 

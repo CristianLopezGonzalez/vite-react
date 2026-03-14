@@ -1,0 +1,288 @@
+﻿.agent-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    min-height: 580px;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+    position: relative;
+}
+
+.agent-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 70, 85, 0.03) 0%, transparent 60%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.agent-card:hover {
+    border-color: rgba(255, 70, 85, 0.2);
+}
+
+.agent-card:hover::before {
+    opacity: 1;
+}
+
+/* Image */
+.agent-card-image {
+    position: relative;
+    overflow: hidden;
+    background: #0d0d0d;
+}
+
+.agent-card-image-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 80%, rgba(255, 70, 85, 0.08) 0%, transparent 70%);
+}
+
+.agent-card-image img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+}
+
+.agent-card:hover .agent-card-image img {
+    transform: scale(1.04);
+}
+
+.agent-card-image-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(to right, transparent 60%, #0a0a0a 100%);
+}
+
+/* Content */
+.agent-card-content {
+    padding: 2.5rem 2.5rem 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Top row */
+.agent-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.agent-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.agent-card-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.15);
+}
+
+.agent-card-race {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ff4655;
+    background: rgba(255, 70, 85, 0.08);
+    border: 1px solid rgba(255, 70, 85, 0.2);
+    padding: 0.25rem 0.7rem;
+    border-radius: 2px;
+}
+
+.agent-card-role {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.agent-card-role img {
+    width: 18px;
+    height: 18px;
+    opacity: 0.5;
+    filter: brightness(0) invert(1);
+}
+
+.agent-card-role span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Name block */
+.agent-card-name-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.agent-card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1;
+    margin: 0;
+}
+
+.agent-card-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+    max-width: 560px;
+}
+
+/* Divider */
+.agent-card-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Abilities */
+.agent-card-abilities-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.2);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.agent-card-abilities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+}
+
+.agent-card-ability {
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+}
+
+.agent-card-ability-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.agent-card-ability:hover .agent-card-ability-icon {
+    border-color: rgba(255, 70, 85, 0.3);
+    background: rgba(255, 70, 85, 0.05);
+}
+
+.agent-card-ability-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+.agent-card-ability:hover .agent-card-ability-icon img {
+    opacity: 1;
+}
+
+.agent-card-ability-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.agent-card-ability-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.agent-card-ability-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .agent-card-abilities-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .agent-card {
+        grid-template-columns: 240px 1fr;
+    }
+
+    .agent-card-name {
+        font-size: 3.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .agent-card {
+        grid-template-columns: 180px 1fr;
+        min-height: 460px;
+    }
+
+    .agent-card-name {
+        font-size: 2.6rem;
+    }
+
+    .agent-card-content {
+        padding: 1.5rem 1.5rem 1.5rem 1rem;
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .agent-card {
+        grid-template-columns: 1fr;
+    }
+
+    .agent-card-image {
+        height: 340px;
+    }
+
+    .agent-card-image-overlay {
+        background: linear-gradient(to top, #0a0a0a 5%, transparent 50%);
+    }
+
+    .agent-card-content {
+        padding: 1.5rem 1rem;
+    }
+}
