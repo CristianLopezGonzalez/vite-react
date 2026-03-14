@@ -8,10 +8,12 @@ import Agents from "./pages/valorant/Agents.tsx";
 import Weapons from "./pages/valorant/Weapons.tsx";
 import Maps from "./pages/valorant/Maps.tsx";
 import Roles from "./pages/valorant/Roles.tsx";
+import ScrollToTop from "./components/ScrollToTop.tsx";
 
 const App = () => {
     return (
         <BrowserRouter>
+            <ScrollToTop/>
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
