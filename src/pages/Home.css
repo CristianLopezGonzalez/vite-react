@@ -1,0 +1,138 @@
+﻿.home {
+    min-height: 100vh;
+    background: #080808;
+    padding: 120px 3rem 5rem;
+    color: #fff;
+}
+
+.home-hero {
+    max-width: 800px;
+    margin-bottom: 6rem;
+}
+
+.home-hero-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 1.5rem;
+}
+
+.home-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin: 0 0 2rem;
+    color: #fff;
+}
+
+.home-title-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+    color: transparent;
+}
+
+.home-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.5);
+    max-width: 540px;
+    margin: 0;
+}
+
+.home-section {
+    margin-bottom: 5rem;
+}
+
+.home-section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 0 1.5rem;
+}
+
+.home-tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.home-tech-card {
+    background: #080808;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: background 0.2s ease;
+}
+
+.home-tech-card:hover {
+    background: #111;
+}
+
+.home-tech-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+}
+
+.home-tech-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.home-links-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.home-link-card {
+    background: #080808;
+    padding: 1.3rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.home-link-card:hover {
+    background: #111;
+}
+
+.home-link-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.2s ease;
+}
+
+.home-link-card:hover .home-link-label {
+    color: #fff;
+}
+
+.home-link-arrow {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.25);
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.home-link-card:hover .home-link-arrow {
+    color: #fff;
+    transform: translate(2px, -2px);
+}
