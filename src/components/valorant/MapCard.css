@@ -1,0 +1,187 @@
+﻿.map-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #0a0a0a;
+    aspect-ratio: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.map-card:hover {
+    border-color: rgba(255, 70, 85, 0.3);
+}
+
+/* Background */
+.map-card-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.map-card-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.25;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    filter: grayscale(40%);
+}
+
+.map-card:hover .map-card-bg-img {
+    opacity: 0.4;
+    transform: scale(1.05);
+}
+
+.map-card-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            to top,
+            #0a0a0a 0%,
+            rgba(10, 10, 10, 0.6) 50%,
+            transparent 100%
+    );
+}
+
+/* Content */
+.map-card-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 2rem;
+    gap: 1.5rem;
+}
+
+/* Radar */
+.map-card-radar-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-card-radar-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 70, 85, 0.2);
+    animation: radar-pulse 3s ease-in-out infinite;
+}
+
+.map-card-radar-ring--outer {
+    width: 100%;
+    height: 100%;
+    animation-delay: 0s;
+}
+
+.map-card-radar-ring--middle {
+    width: 75%;
+    height: 75%;
+    animation-delay: 0.5s;
+    border-color: rgba(255, 70, 85, 0.15);
+}
+
+@keyframes radar-pulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.03); }
+}
+
+.map-card-radar-sweep {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            rgba(255, 70, 85, 0.12) 60deg,
+            transparent 60deg
+    );
+    animation: radar-sweep 4s linear infinite;
+    z-index: 1;
+}
+
+@keyframes radar-sweep {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.map-card-radar {
+    position: relative;
+    z-index: 2;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid rgba(255, 70, 85, 0.3);
+    box-shadow:
+            0 0 20px rgba(255, 70, 85, 0.1),
+            inset 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s ease;
+}
+
+.map-card:hover .map-card-radar {
+    box-shadow:
+            0 0 35px rgba(255, 70, 85, 0.25),
+            inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.map-card-radar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: hue-rotate(0deg) saturate(0.8) brightness(0.9);
+    transition: transform 0.4s ease;
+}
+
+.map-card:hover .map-card-radar img {
+    transform: scale(1.08);
+}
+
+/* Info */
+.map-card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    text-align: center;
+}
+
+.map-card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 0.08em;
+    color: #fff;
+    margin: 0;
+    line-height: 1;
+}
+
+.map-card-sites {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.map-card-sites-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.map-card-sites-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    color: #ff4655;
+}

@@ -1,7 +1,36 @@
-﻿const Maps = () => {
-    return(
-        <h5>Maps</h5>
+﻿import NavbarValorant from '../../components/valorant/NavbarValorant'
+import MapCard from '../../components/valorant/MapCard'
+import useMaps from '../../hooks/useMaps'
+import './Maps.css'
+
+const Maps = () => {
+    const { maps, loading } = useMaps()
+
+    return (
+        <>
+            <NavbarValorant />
+            <main className="maps-page">
+                <div className="maps-header">
+                    <h1 className="maps-title">Maps</h1>
+                    <span className="maps-count">
+            {!loading ? `${maps.length} maps` : '—'}
+          </span>
+                </div>
+
+                {loading ? (
+                    <div className="maps-loading">
+                        <span>Loading...</span>
+                    </div>
+                ) : (
+                    <div className="maps-grid">
+                        {maps.map(map => (
+                            <MapCard key={map.mapId} map={map} />
+                        ))}
+                    </div>
+                )}
+            </main>
+        </>
     )
 }
 
-export default Maps;
+export default Maps
