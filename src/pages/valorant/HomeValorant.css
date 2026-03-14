@@ -1,0 +1,375 @@
+﻿.home-valorant {
+    min-height: 100vh;
+    background: #080808;
+    color: #fff;
+}
+
+/* Hero */
+.hv-hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hv-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/bd7da1b3d8e2e33f5dab7b18a34d1869568ad2e3-1920x1080.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(30%);
+    transition: transform 0.1s ease;
+}
+
+.hv-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            to right,
+            rgba(8, 8, 8, 0.95) 40%,
+            rgba(8, 8, 8, 0.5) 70%,
+            rgba(8, 8, 8, 0.2) 100%
+    );
+}
+
+.hv-hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 3rem;
+    max-width: 700px;
+}
+
+.hv-hero-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #ff4655;
+    display: block;
+    margin-bottom: 1.2rem;
+}
+
+.hv-hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 14vw, 11rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: #fff;
+    margin: 0 0 1.5rem;
+}
+
+.hv-hero-title-red {
+    color: #ff4655;
+}
+
+.hv-hero-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.5);
+    max-width: 480px;
+    margin: 0 0 3rem;
+}
+
+.hv-hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.hv-hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.hv-hero-stat-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+    line-height: 1;
+}
+
+.hv-hero-stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.hv-hero-stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Sections */
+.hv-section {
+    padding: 6rem 3rem;
+}
+
+.hv-section--dark {
+    background: #050505;
+}
+
+.hv-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+}
+
+.hv-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: 0.05em;
+    color: #fff;
+    margin: 0 0 0.5rem;
+}
+
+.hv-section-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.35);
+    margin: 0;
+    max-width: 400px;
+}
+
+.hv-section-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.hv-section-link:hover {
+    color: #ff4655;
+}
+
+/* Agents preview */
+.hv-agents-preview {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.hv-agent-preview-card {
+    position: relative;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+    display: block;
+    background: #0d0d0d;
+}
+
+.hv-agent-preview-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    filter: grayscale(40%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.hv-agent-preview-card:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+.hv-agent-preview-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 0.8rem 0.8rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hv-agent-preview-card:hover .hv-agent-preview-overlay {
+    opacity: 1;
+}
+
+/* Weapons preview */
+.hv-weapons-preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.hv-weapon-preview-card {
+    background: #0a0a0a;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.hv-weapon-preview-card:hover {
+    background: #111;
+}
+
+.hv-weapon-preview-type {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ff4655;
+    align-self: flex-start;
+}
+
+.hv-weapon-preview-card img {
+    width: 100%;
+    max-height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 16px rgba(255, 70, 85, 0.1));
+    transition: transform 0.3s ease;
+}
+
+.hv-weapon-preview-card:hover img {
+    transform: scale(1.06) translateY(-4px);
+}
+
+.hv-weapon-preview-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+    align-self: flex-start;
+}
+
+/* Maps preview */
+.hv-maps-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.hv-map-preview-card {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    display: block;
+    background: #0d0d0d;
+}
+
+.hv-map-preview-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%);
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.hv-map-preview-card:hover .hv-map-preview-bg {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+.hv-map-preview-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%);
+}
+
+.hv-map-preview-info {
+    position: absolute;
+    bottom: 1.2rem;
+    left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.hv-map-preview-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+    line-height: 1;
+}
+
+.hv-map-preview-sites {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ff4655;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hv-agents-preview {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hv-hero-content {
+        padding: 0 1.5rem;
+    }
+
+    .hv-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .hv-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .hv-agents-preview {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hv-weapons-preview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hv-maps-preview {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hv-section {
+        padding: 3rem 1rem;
+    }
+
+    .hv-agents-preview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hv-weapons-preview {
+        grid-template-columns: 1fr;
+    }
+}

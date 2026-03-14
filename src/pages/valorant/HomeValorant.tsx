@@ -1,12 +1,136 @@
-﻿import NavbarValorant from "../../components/valorant/NavbarValorant.tsx";
+﻿import { Link } from 'react-router-dom'
+import NavbarValorant from '../../components/valorant/NavbarValorant'
+import useAgents from '../../hooks/useAgents'
+import useWeapons from '../../hooks/useWeapons'
+import useMaps from '../../hooks/useMaps'
+import './HomeValorant.css'
 
 const HomeValorant = () => {
-    return (
-        <div>
-            <NavbarValorant />
-            <h5>Home valorant</h5>
-        </div>
+    const { agents, loading: loadingAgents } = useAgents()
+    const { weapons, loading: loadingWeapons } = useWeapons()
+    const { maps, loading: loadingMaps } = useMaps()
 
+    return (
+        <>
+            <NavbarValorant />
+            <main className="home-valorant">
+
+                {/* Hero */}
+                <section className="hv-hero">
+                    <div className="hv-hero-bg" />
+                    <div className="hv-hero-overlay" />
+                    <div className="hv-hero-content">
+                        <span className="hv-hero-tag">Tactical FPS · Riot Games</span>
+                        <h1 className="hv-hero-title">
+                            VALO<span className="hv-hero-title-red">RANT</span>
+                        </h1>
+                        <p className="hv-hero-desc">
+                            A 5v5 character-based tactical shooter where precise gunplay
+                            meets unique agent abilities. Every round is a fight for the spike.
+                        </p>
+                        <div className="hv-hero-stats">
+                            <div className="hv-hero-stat">
+                <span className="hv-hero-stat-value">
+                  {loadingAgents ? '—' : agents.length}
+                </span>
+                                <span className="hv-hero-stat-label">Agents</span>
+                            </div>
+                            <div className="hv-hero-stat-divider" />
+                            <div className="hv-hero-stat">
+                <span className="hv-hero-stat-value">
+                  {loadingWeapons ? '—' : weapons.length}
+                </span>
+                                <span className="hv-hero-stat-label">Weapons</span>
+                            </div>
+                            <div className="hv-hero-stat-divider" />
+                            <div className="hv-hero-stat">
+                <span className="hv-hero-stat-value">
+                  {loadingMaps ? '—' : maps.length}
+                </span>
+                                <span className="hv-hero-stat-label">Maps</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Agents preview */}
+                <section className="hv-section">
+                    <div className="hv-section-header">
+                        <div>
+                            <h2 className="hv-section-title">Agents</h2>
+                            <p className="hv-section-desc">
+                                Choose your agent and dominate the battlefield with unique abilities.
+                            </p>
+                        </div>
+                        <Link to="/valorant/agents" className="hv-section-link">
+                            View all <span>↗</span>
+                        </Link>
+                    </div>
+                    <div className="hv-agents-preview">
+                        {!loadingAgents && agents.slice(0, 6).map(agent => (
+                            <Link to="/valorant/agents" key={agent.agentId} className="hv-agent-preview-card">
+                                <img src={agent.icon} alt={agent.agentName} />
+                                <div className="hv-agent-preview-overlay">
+                                    <span>{agent.agentName}</span>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Weapons preview */}
+                <section className="hv-section hv-section--dark">
+                    <div className="hv-section-header">
+                        <div>
+                            <h2 className="hv-section-title">Weapons</h2>
+                            <p className="hv-section-desc">
+                                Master every weapon in the arsenal. From pistols to sniper rifles.
+                            </p>
+                        </div>
+                        <Link to="/valorant/weapons" className="hv-section-link">
+                            View all <span>↗</span>
+                        </Link>
+                    </div>
+                    <div className="hv-weapons-preview">
+                        {!loadingWeapons && weapons.slice(0, 4).map(weapon => (
+                            <Link to="/valorant/weapons" key={weapon.weaponId} className="hv-weapon-preview-card">
+                                <span className="hv-weapon-preview-type">{weapon.type}</span>
+                                <img src={weapon.icon} alt={weapon.weaponName} />
+                                <span className="hv-weapon-preview-name">{weapon.weaponName}</span>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Maps preview */}
+                <section className="hv-section">
+                    <div className="hv-section-header">
+                        <div>
+                            <h2 className="hv-section-title">Maps</h2>
+                            <p className="hv-section-desc">
+                                Learn every corner of every map. Knowledge is half the battle.
+                            </p>
+                        </div>
+                        <Link to="/valorant/maps" className="hv-section-link">
+                            View all <span>↗</span>
+                        </Link>
+                    </div>
+                    <div className="hv-maps-preview">
+                        {!loadingMaps && maps.slice(0, 3).map(map => (
+                            <Link to="/valorant/maps" key={map.mapId} className="hv-map-preview-card">
+                                <img src={map.icon} alt={map.mapName} className="hv-map-preview-bg" />
+                                <div className="hv-map-preview-overlay" />
+                                <div className="hv-map-preview-info">
+                                    <span className="hv-map-preview-name">{map.mapName}</span>
+                                    <span className="hv-map-preview-sites">{map.spikeSites}</span>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
+
+            </main>
+        </>
     )
 }
 
