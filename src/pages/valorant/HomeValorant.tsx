@@ -6,9 +6,9 @@ import useMaps from '../../hooks/useMaps'
 import './HomeValorant.css'
 
 const HomeValorant = () => {
-    const { agents, loading: loadingAgents } = useAgents()
-    const { weapons, loading: loadingWeapons } = useWeapons()
-    const { maps, loading: loadingMaps } = useMaps()
+    const { data: agents = [], isLoading: loadingAgents } = useAgents()
+    const { data: weapons = [], isLoading: loadingWeapons } = useWeapons()
+    const { data: maps = [], isLoading: loadingMaps } = useMaps()
 
     return (
         <>
@@ -25,8 +25,7 @@ const HomeValorant = () => {
                             VALO<span className="hv-hero-title-red">RANT</span>
                         </h1>
                         <p className="hv-hero-desc">
-                            A 5v5 character-based tactical shooter where precise gunplay
-                            meets unique agent abilities. Every round is a fight for the spike.
+                            Showcase your style and experience on an international competitive stage. You'll have 13 rounds to attack and defend your side using precise weapon handling and tactical skills. And with only one life per round, you'll have to think faster than your opponents if you want to survive. Face off against your enemies in Competitive and Normal modes, as well as Deathmatch and Spike Rush.
                         </p>
                         <div className="hv-hero-stats">
                             <div className="hv-hero-stat">
@@ -69,7 +68,7 @@ const HomeValorant = () => {
                     <div className="hv-agents-preview">
                         {!loadingAgents && agents.slice(0, 6).map(agent => (
                             <Link to="/valorant/agents" key={agent.agentId} className="hv-agent-preview-card">
-                                <img src={agent.icon} alt={agent.agentName} />
+                                <img src={agent.icon} alt={agent.agentName} loading="lazy" />
                                 <div className="hv-agent-preview-overlay">
                                     <span>{agent.agentName}</span>
                                 </div>
@@ -95,7 +94,7 @@ const HomeValorant = () => {
                         {!loadingWeapons && weapons.slice(0, 4).map(weapon => (
                             <Link to="/valorant/weapons" key={weapon.weaponId} className="hv-weapon-preview-card">
                                 <span className="hv-weapon-preview-type">{weapon.type}</span>
-                                <img src={weapon.icon} alt={weapon.weaponName} />
+                                <img src={weapon.icon} alt={weapon.weaponName} loading="lazy" />
                                 <span className="hv-weapon-preview-name">{weapon.weaponName}</span>
                             </Link>
                         ))}
@@ -118,7 +117,7 @@ const HomeValorant = () => {
                     <div className="hv-maps-preview">
                         {!loadingMaps && maps.slice(0, 3).map(map => (
                             <Link to="/valorant/maps" key={map.mapId} className="hv-map-preview-card">
-                                <img src={map.icon} alt={map.mapName} className="hv-map-preview-bg" />
+                                <img src={map.icon} alt={map.mapName} className="hv-map-preview-bg" loading="lazy" />
                                 <div className="hv-map-preview-overlay" />
                                 <div className="hv-map-preview-info">
                                     <span className="hv-map-preview-name">{map.mapName}</span>

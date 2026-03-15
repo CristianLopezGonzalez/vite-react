@@ -4,7 +4,9 @@ import useMaps from '../../hooks/useMaps'
 import './Maps.css'
 
 const Maps = () => {
-    const { maps, loading } = useMaps()
+    const { data: maps = [], isLoading: loading, error } = useMaps()
+
+    if (error) return <div className="maps-error">Error al cargar los mapas</div>
 
     return (
         <>

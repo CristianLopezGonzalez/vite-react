@@ -1,5 +1,5 @@
-﻿import { Agent } from '../../api/agents'
-import { Role } from '../../api/roles'
+﻿import {Agent} from '../../api/agents'
+import {Role} from '../../api/roles'
 import './AgentCard.css'
 
 interface AgentCardProps {
@@ -7,13 +7,13 @@ interface AgentCardProps {
     role?: Role
 }
 
-const AgentCard = ({ agent, role }: AgentCardProps) => {
+const AgentCard = ({agent, role}: AgentCardProps) => {
     return (
         <div className="agent-card">
             <div className="agent-card-image">
-                <div className="agent-card-image-bg" />
-                <img src={agent.icon} alt={agent.agentName} />
-                <div className="agent-card-image-overlay" />
+                <div className="agent-card-image-bg"/>
+                <img src={agent.icon} alt={agent.agentName} loading="lazy"/>
+                <div className="agent-card-image-overlay"/>
             </div>
 
             <div className="agent-card-content">
@@ -26,7 +26,7 @@ const AgentCard = ({ agent, role }: AgentCardProps) => {
                     </div>
                     {role && (
                         <div className="agent-card-role">
-                            <img src={role.icon} alt={role.roleName} />
+                            <img src={role.icon} alt={role.roleName} loading="lazy"/>
                             <span>{role.roleName}</span>
                         </div>
                     )}
@@ -37,7 +37,7 @@ const AgentCard = ({ agent, role }: AgentCardProps) => {
                     <p className="agent-card-desc">{agent.description}</p>
                 </div>
 
-                <div className="agent-card-divider" />
+                <div className="agent-card-divider"/>
 
                 <div className="agent-card-abilities">
                     <span className="agent-card-abilities-label">Abilities</span>
@@ -45,7 +45,7 @@ const AgentCard = ({ agent, role }: AgentCardProps) => {
                         {agent.abilities.map((ability) => (
                             <div className="agent-card-ability" key={ability.abilityId}>
                                 <div className="agent-card-ability-icon">
-                                    <img src={ability.icon} alt={ability.abilityName} />
+                                    <img src={ability.icon} alt={ability.abilityName} loading="lazy"/>
                                 </div>
                                 <div className="agent-card-ability-info">
                                     <span className="agent-card-ability-name">{ability.abilityName}</span>

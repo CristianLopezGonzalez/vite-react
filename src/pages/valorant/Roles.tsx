@@ -6,8 +6,8 @@ import { Agent } from '../../api/agents'
 import './Roles.css'
 
 const Roles = () => {
-    const { roles, loading: loadingRoles } = useRoles()
-    const { agents, loading: loadingAgents } = useAgents()
+    const { data: roles = [], isLoading: loadingRoles, error: errorRoles } = useRoles()
+    const { data: agents = [], isLoading: loadingAgents } = useAgents()
 
     const loading = loadingRoles || loadingAgents
 
@@ -16,6 +16,8 @@ const Roles = () => {
         acc[agent.roleId].push(agent)
         return acc
     }, {} as Record<number, Agent[]>)
+
+    if (errorRoles) return <div className="roles-error">Error al cargar los roles</div>
 
     return (
         <>

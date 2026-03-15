@@ -2,12 +2,12 @@
 import AgentCard from '../../components/valorant/AgentCard'
 import useAgents from '../../hooks/useAgents'
 import useRoles from '../../hooks/useRoles'
-import { Role } from '../../api/roles'
+import {Role} from '../../api/roles'
 import './Agents.css'
 
 const Agents = () => {
-    const { agents, loading: loadingAgents } = useAgents()
-    const { roles, loading: loadingRoles } = useRoles()
+    const {data: agents = [], isLoading: loadingAgents, error: errorAgents} = useAgents()
+    const {data: roles = [], isLoading: loadingRoles} = useRoles()
 
     const rolesMap = roles.reduce((acc, role) => {
         acc[role.roleId] = role
@@ -16,9 +16,11 @@ const Agents = () => {
 
     const loading = loadingAgents || loadingRoles
 
+    if (errorAgents) return <div className="agents-error">Error al cargar los agentes</div>
+
     return (
         <>
-            <NavbarValorant />
+            <NavbarValorant/>
             <main className="agents-page">
                 <div className="agents-header">
                     <h1 className="agents-title">Agents</h1>

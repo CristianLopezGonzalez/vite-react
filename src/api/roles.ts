@@ -7,7 +7,7 @@ export interface Role {
     icon: string
 }
 
-const getRoles = async (): Promise<Role[]> => {
+const getAllRoles = async (): Promise<Role[]> => {
     const response = await api.get('/roles')
     return response.data.data
 }
@@ -17,4 +17,4 @@ const getRoleById = async (id: number): Promise<Role> => {
     return response.data.data
 }
 
-export { getRoles, getRoleById }
+export { getAllRoles, getRoleById }

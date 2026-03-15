@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+﻿import { useState, useMemo } from 'react'
 import NavbarValorant from '../../components/valorant/NavbarValorant'
 import WeaponCard from '../../components/valorant/WeaponCard'
 import useWeapons from '../../hooks/useWeapons'
@@ -7,12 +7,17 @@ import './Weapons.css'
 const WEAPON_TYPES = ['All', 'Sidearm', 'SMG', 'Shotgun', 'Rifle', 'Sniper Rifle', 'Machine Gun', 'Melee']
 
 const Weapons = () => {
-    const { weapons, loading } = useWeapons()
+    const { data: weapons = [], isLoading: loading, error } = useWeapons()
     const [activeType, setActiveType] = useState('All')
 
-    const filtered = activeType === 'All'
-        ? weapons
-        : weapons.filter(w => w.type === activeType)
+    const filtered = useMemo(() =>
+            activeType === 'All'
+                ? weapons
+                : weapons.filter(w => w.type === activeType),
+        [weapons, activeType]
+    )
+
+    if (error) return <div className="weapons-error">Error al cargar las armas</div>
 
     return (
         <>
