@@ -1,4 +1,4 @@
-﻿import api from './axios'
+﻿import api from '../axios.ts'
 
 export interface Weapon {
     weaponId: number
@@ -16,12 +16,12 @@ export interface Weapon {
 }
 
 const getAllWeapons = async (): Promise<Weapon[]> => {
-    const response = await api.get('/weapons')
+    const response = await api.get('/valorant/weapons')
     return response.data.data
 }
 
 const getWeaponById = async (id: number): Promise<Weapon> => {
-    const response = await api.get(`/weapons/${id}`)
+    const response = await api.get(`/valorant/weapons/${id}`)
     return response.data.data
 }
 

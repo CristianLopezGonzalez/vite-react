@@ -1,5 +1,5 @@
 ﻿import { useQuery } from '@tanstack/react-query'
-import { getAllMaps } from '../api/maps'
+import { getAllMaps } from '../../api/valorant/maps.ts'
 
 const useMaps = () => {
     return useQuery({

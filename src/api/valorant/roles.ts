@@ -1,4 +1,4 @@
-﻿import api from './axios'
+﻿import api from '../axios.ts'
 
 export interface Role {
     roleId: number
@@ -8,12 +8,12 @@ export interface Role {
 }
 
 const getAllRoles = async (): Promise<Role[]> => {
-    const response = await api.get('/roles')
+    const response = await api.get('/valorant/roles')
     return response.data.data
 }
 
 const getRoleById = async (id: number): Promise<Role> => {
-    const response = await api.get(`/roles/${id}`)
+    const response = await api.get(`/valorant/roles/${id}`)
     return response.data.data
 }
 

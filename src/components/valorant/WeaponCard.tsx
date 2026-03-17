@@ -1,4 +1,4 @@
-﻿import {Weapon} from '../../api/weapons'
+﻿import {Weapon} from '../../api/valorant/weapons.ts'
 import './WeaponCard.css'
 
 interface WeaponCardProps {

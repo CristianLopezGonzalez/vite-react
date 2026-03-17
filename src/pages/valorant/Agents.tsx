@@ -1,8 +1,8 @@
 ﻿import NavbarValorant from '../../components/valorant/NavbarValorant'
 import AgentCard from '../../components/valorant/AgentCard'
-import useAgents from '../../hooks/useAgents'
-import useRoles from '../../hooks/useRoles'
-import {Role} from '../../api/roles'
+import useAgents from '../../hooks/valorant/useAgents.ts'
+import useRoles from '../../hooks/valorant/useRoles.ts'
+import {Role} from '../../api/valorant/roles.ts'
 import './Agents.css'
 
 const Agents = () => {

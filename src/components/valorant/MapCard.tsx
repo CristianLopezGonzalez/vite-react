@@ -1,4 +1,4 @@
-﻿import {Map} from '../../api/maps'
+﻿import {Map} from '../../api/valorant/maps.ts'
 import './MapCard.css'
 
 interface MapCardProps {

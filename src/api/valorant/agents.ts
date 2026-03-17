@@ -1,4 +1,4 @@
-﻿import api from './axios.ts'
+﻿import api from '../axios.ts'
 
 export interface Ability {
     abilityId: number
@@ -20,7 +20,7 @@ export interface Agent {
 }
 
 const getAllAgents = async (): Promise<Agent[]> => {
-    const response = await api.get('/agents');
+    const response = await api.get('/valorant/agents');
     return response.data.data;
 }
 

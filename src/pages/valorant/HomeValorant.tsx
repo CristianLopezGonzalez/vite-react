@@ -1,8 +1,8 @@
 ﻿import { Link } from 'react-router-dom'
 import NavbarValorant from '../../components/valorant/NavbarValorant'
-import useAgents from '../../hooks/useAgents'
-import useWeapons from '../../hooks/useWeapons'
-import useMaps from '../../hooks/useMaps'
+import useAgents from '../../hooks/valorant/useAgents.ts'
+import useWeapons from '../../hooks/valorant/useWeapons.ts'
+import useMaps from '../../hooks/valorant/useMaps.ts'
 import './HomeValorant.css'
 
 const HomeValorant = () => {

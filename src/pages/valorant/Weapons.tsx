@@ -1,7 +1,7 @@
 ﻿import { useState, useMemo } from 'react'
 import NavbarValorant from '../../components/valorant/NavbarValorant'
 import WeaponCard from '../../components/valorant/WeaponCard'
-import useWeapons from '../../hooks/useWeapons'
+import useWeapons from '../../hooks/valorant/useWeapons.ts'
 import './Weapons.css'
 
 const WEAPON_TYPES = ['All', 'Sidearm', 'SMG', 'Shotgun', 'Rifle', 'Sniper Rifle', 'Machine Gun', 'Melee']

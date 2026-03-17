@@ -1,6 +1,6 @@
 ﻿import NavbarValorant from '../../components/valorant/NavbarValorant'
 import MapCard from '../../components/valorant/MapCard'
-import useMaps from '../../hooks/useMaps'
+import useMaps from '../../hooks/valorant/useMaps.ts'
 import './Maps.css'
 
 const Maps = () => {

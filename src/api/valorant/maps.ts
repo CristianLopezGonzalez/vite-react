@@ -1,4 +1,4 @@
-﻿import api from './axios'
+﻿import api from '../axios.ts'
 
 export interface Map {
     mapId: number
@@ -9,12 +9,12 @@ export interface Map {
 }
 
 const getAllMaps = async (): Promise<Map[]> => {
-    const response = await api.get('/maps')
+    const response = await api.get('/valorant/maps')
     return response.data.data
 }
 
 const getMapById = async (id: number): Promise<Map> => {
-    const response = await api.get(`/maps/${id}`)
+    const response = await api.get(`/valorant/maps/${id}`)
     return response.data.data
 }
 

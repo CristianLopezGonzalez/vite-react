@@ -1,5 +1,5 @@
-﻿import {Agent} from '../../api/agents'
-import {Role} from '../../api/roles'
+﻿import {Agent} from '../../api/valorant/agents.ts'
+import {Role} from '../../api/valorant/roles.ts'
 import './AgentCard.css'
 
 interface AgentCardProps {
