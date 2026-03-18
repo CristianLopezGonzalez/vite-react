@@ -1,0 +1,162 @@
+.m-weapon-card {
+    background: #1f1f1f;
+    border: 1px solid #333;
+    padding: 2.5rem;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.m-weapon-card:hover {
+    border-color: #c0fe04;
+    background: #151515;
+}
+
+.m-weapon-type {
+    font-size: 0.8rem;
+    color: #c0fe04;
+    letter-spacing: 0.25em;
+    font-weight: 700;
+}
+
+.m-weapon-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    margin: 0.5rem 0 0;
+    color: #fff;
+    letter-spacing: 0.05em;
+    line-height: 1;
+}
+
+.m-weapon-visual {
+    height: 160px; /* Taller */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, rgba(192, 254, 4, 0.03) 0%, transparent 80%);
+}
+
+.m-weapon-visual img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.m-weapon-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.m-stat-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #111;
+}
+
+.m-stat-label { 
+    font-size: 0.7rem; 
+    color: #555; 
+    letter-spacing: 0.2rem; 
+    font-weight: 700; 
+    text-transform: uppercase;
+}
+.m-stat-value { 
+    font-size: 1.8rem; 
+    color: #c0fe04; 
+    font-weight: 900; 
+    line-height: 1;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.m-card-corner {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border: 1px solid #c0fe04;
+    opacity: 0.3;
+}
+.m-card-corner.tl { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.m-card-corner.br { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+
+.m-tech-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    border-top: 1px solid #111;
+    padding-top: 1.5rem;
+}
+
+.m-tech-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.m-tech-label {
+    font-size: 0.55rem;
+    color: #444;
+    letter-spacing: 0.1em;
+}
+
+.m-tech-divider {
+    flex: 1;
+    height: 1px;
+    background: dotted #222;
+    margin: 0 0.5rem;
+    border-bottom: 1px dotted #222;
+}
+
+.m-tech-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+.m-intel-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.m-intel-label {
+    font-size: 0.55rem;
+    color: #c0fe04;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+}
+
+.m-intel-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #888;
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Corners */
+.m-corner {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border: 1px solid #222;
+}
+
+.m-weapon-dossier:hover .m-corner { border-color: #c0fe04; }
+
+.m-c-tl { top: 0.8rem; left: 0.8rem; border-right: 0; border-bottom: 0; }
+.m-c-tr { top: 0.8rem; right: 0.8rem; border-left: 0; border-bottom: 0; }
+.m-c-bl { bottom: 0.8rem; left: 0.8rem; border-right: 0; border-top: 0; }
+.m-c-br { bottom: 0.8rem; right: 0.8rem; border-left: 0; border-top: 0; }

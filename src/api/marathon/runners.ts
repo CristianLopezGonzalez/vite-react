@@ -1,4 +1,4 @@
-﻿import api from '../axios.ts'
+import api from '../axios.ts'
 
 export interface MarathonRunners {
     runnerId:number
@@ -8,9 +8,13 @@ export interface MarathonRunners {
     icon:string
 }
 
-const getAllRunners = async ():Promise<MarathonRunners> => {
-    const response = await api.get('/marathon/runners');
-    return response.data.data;
+const getAllRunners = async ():Promise<MarathonRunners[]> => {
+    try {
+        const response = await api.get('/marathon/runners');
+        return response.data?.data || [];
+    } catch (e) {
+        return [];
+    }
 }
 
 export { getAllRunners };

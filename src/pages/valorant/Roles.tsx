@@ -1,4 +1,4 @@
-﻿import NavbarValorant from '../../components/valorant/NavbarValorant'
+import NavbarValorant from '../../components/valorant/NavbarValorant'
 import RoleCard from '../../components/valorant/RoleCard'
 import useRoles from '../../hooks/valorant/useRoles.ts'
 import useAgents from '../../hooks/valorant/useAgents.ts'
@@ -17,8 +17,6 @@ const Roles = () => {
         return acc
     }, {} as Record<number, Agent[]>)
 
-    if (errorRoles) return <div className="roles-error">Error al cargar los roles</div>
-
     return (
         <>
             <NavbarValorant />
@@ -26,13 +24,23 @@ const Roles = () => {
                 <div className="roles-header">
                     <h1 className="roles-title">Roles</h1>
                     <span className="roles-count">
-            {!loading ? `${roles.length} roles` : '—'}
-          </span>
+                        {!loading ? `${roles.length} roles` : '—'}
+                    </span>
                 </div>
 
                 {loading ? (
-                    <div className="roles-loading">
-                        <span>Loading...</span>
+                    <div className="roles-grid">
+                        {Array.from({ length: 4 }).map((_, i) => (
+                            <div key={i} className="role-skeleton" />
+                        ))}
+                    </div>
+                ) : errorRoles ? (
+                    <div className="roles-error-container">
+                        <span className="v-error-icon">⚠</span>
+                        <div className="v-error-info">
+                            <span className="v-error-title">PROTOCOL_ERROR</span>
+                            <p className="v-error-text">Unable to initialize role manifests. Biometric interface required.</p>
+                        </div>
                     </div>
                 ) : (
                     <div className="roles-grid">

@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import NavbarValorant from '../../components/valorant/NavbarValorant'
 import useAgents from '../../hooks/valorant/useAgents.ts'
 import useWeapons from '../../hooks/valorant/useWeapons.ts'
@@ -14,6 +14,19 @@ const HomeValorant = () => {
         <>
             <NavbarValorant />
             <main className="home-valorant">
+                {/* Tactical HUD Elements */}
+                <div className="hv-hud-edge hv-hud-edge--top-left" />
+                <div className="hv-hud-edge hv-hud-edge--top-right" />
+                <div className="hv-hud-edge hv-hud-edge--bottom-left" />
+                <div className="hv-hud-edge hv-hud-edge--bottom-right" />
+                <div className="hv-hud-noise" />
+                <div className="hv-hud-vignette" />
+                
+                <div className="hv-hud-status">
+                    <div className="hv-hud-status-line">SYSTEM: ONLINE</div>
+                    <div className="hv-hud-status-line">ACCESS_LEVEL: ADMIN</div>
+                    <div className="hv-hud-status-line">LOCATION: [REDACTED]</div>
+                </div>
 
                 {/* Hero */}
                 <section className="hv-hero">
@@ -29,23 +42,23 @@ const HomeValorant = () => {
                         </p>
                         <div className="hv-hero-stats">
                             <div className="hv-hero-stat">
-                <span className="hv-hero-stat-value">
-                  {loadingAgents ? '—' : agents.length}
-                </span>
+                                <span className="hv-hero-stat-value">
+                                    {loadingAgents ? '—' : agents.length}
+                                </span>
                                 <span className="hv-hero-stat-label">Agents</span>
                             </div>
                             <div className="hv-hero-stat-divider" />
                             <div className="hv-hero-stat">
-                <span className="hv-hero-stat-value">
-                  {loadingWeapons ? '—' : weapons.length}
-                </span>
+                                <span className="hv-hero-stat-value">
+                                    {loadingWeapons ? '—' : weapons.length}
+                                </span>
                                 <span className="hv-hero-stat-label">Weapons</span>
                             </div>
                             <div className="hv-hero-stat-divider" />
                             <div className="hv-hero-stat">
-                <span className="hv-hero-stat-value">
-                  {loadingMaps ? '—' : maps.length}
-                </span>
+                                <span className="hv-hero-stat-value">
+                                    {loadingMaps ? '—' : maps.length}
+                                </span>
                                 <span className="hv-hero-stat-label">Maps</span>
                             </div>
                         </div>

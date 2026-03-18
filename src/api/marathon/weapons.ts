@@ -1,4 +1,4 @@
-﻿import api from '../axios.ts'
+import api from '../axios.ts'
 
 export interface MarathonWeapons {
     weaponId:number
@@ -12,9 +12,13 @@ export interface MarathonWeapons {
     icon:string
 }
 
-const getAllWeapons = async ():Promise<MarathonWeapons> => {
-    const response = await api.get('/marathon/weapons');
-    return response.data.data;
+const getAllWeapons = async ():Promise<MarathonWeapons[]> => {
+    try {
+        const response = await api.get('/marathon/weapons');
+        return response.data?.data || [];
+    } catch (e) {
+        return [];
+    }
 }
 
 export { getAllWeapons };

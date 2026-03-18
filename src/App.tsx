@@ -5,12 +5,16 @@ import Footer from "./components/Footer.tsx"
 import ScrollToTop from "./components/ScrollToTop.tsx"
 
 const Home = lazy(() => import('./pages/Home.tsx'))
+
 const HomeValorant = lazy(() => import('./pages/valorant/HomeValorant.tsx'))
+const ValorantAgents = lazy(() => import('./pages/valorant/Agents.tsx'))
+const ValorantWeapons = lazy(() => import('./pages/valorant/Weapons.tsx'))
+const ValorantMaps = lazy(() => import('./pages/valorant/Maps.tsx'))
+const ValorantRoles = lazy(() => import('./pages/valorant/Roles.tsx'))
+
 const HomeMarathon = lazy(() => import('./pages/marathon/HomeMarathon.tsx'))
-const Agents = lazy(() => import('./pages/valorant/Agents.tsx'))
-const Weapons = lazy(() => import('./pages/valorant/Weapons.tsx'))
-const Maps = lazy(() => import('./pages/valorant/Maps.tsx'))
-const Roles = lazy(() => import('./pages/valorant/Roles.tsx'))
+const MarathonRunners = lazy(() => import('./pages/marathon/Runners.tsx'))
+const MarathonWeapons = lazy(() => import('./pages/marathon/Weapons.tsx'))
 
 const App = () => {
     return (
@@ -20,12 +24,16 @@ const App = () => {
             <Suspense fallback={<div style={{padding: '2rem', textAlign: 'center'}}>Loading...</div>}>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
+
                     <Route path="/valorant" element={<HomeValorant/>}/>
-                    <Route path="/valorant/agents" element={<Agents/>}/>
-                    <Route path="/valorant/weapons" element={<Weapons/>}/>
-                    <Route path="/valorant/maps" element={<Maps/>}/>
-                    <Route path="/valorant/roles" element={<Roles/>}/>
+                    <Route path="/valorant/agents" element={<ValorantAgents/>}/>
+                    <Route path="/valorant/weapons" element={<ValorantWeapons/>}/>
+                    <Route path="/valorant/maps" element={<ValorantMaps/>}/>
+                    <Route path="/valorant/roles" element={<ValorantRoles/>}/>
+
                     <Route path="/marathon" element={<HomeMarathon/>}/>
+                    <Route path="/marathon/runners" element={<MarathonRunners/>}/>
+                    <Route path="/marathon/weapons" element={<MarathonWeapons/>}/>
                 </Routes>
             </Suspense>
             <Footer/>

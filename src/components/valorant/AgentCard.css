@@ -1,288 +1,241 @@
-﻿.agent-card {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    min-height: 580px;
-    background: #0a0a0a;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    overflow: hidden;
-    transition: border-color 0.3s ease;
+.agent-card {
     position: relative;
-}
-
-.agent-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255, 70, 85, 0.03) 0%, transparent 60%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    height: 700px;
+    background: #111;
+    overflow: hidden;
+    border: 1px solid #222;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .agent-card:hover {
-    border-color: rgba(255, 70, 85, 0.2);
+    border-color: #ff4655;
+    box-shadow: 0 0 50px rgba(255, 70, 85, 0.1);
 }
 
-.agent-card:hover::before {
-    opacity: 1;
-}
-
-/* Image */
-.agent-card-image {
-    position: relative;
-    overflow: hidden;
-    background: #0d0d0d;
-}
-
-.agent-card-image-bg {
+/* Background Artwork */
+.agent-card-bg {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 80%, rgba(255, 70, 85, 0.08) 0%, transparent 70%);
+    z-index: 0;
 }
 
-.agent-card-image img {
-    position: relative;
-    z-index: 1;
+.agent-card-bg img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top center;
-    transition: transform 0.5s ease;
+    filter: grayscale(1) brightness(0.5); /* Lightened */
+    transition: all 0.8s ease;
 }
 
-.agent-card:hover .agent-card-image img {
-    transform: scale(1.04);
+.agent-card:hover .agent-card-bg img {
+    filter: grayscale(0.4) brightness(0.7) scale(1.05); /* Lighter on hover */
 }
 
-.agent-card-image-overlay {
+.agent-card-bg-overlay {
     position: absolute;
     inset: 0;
-    z-index: 2;
-    background: linear-gradient(to right, transparent 60%, #0a0a0a 100%);
+    background: radial-gradient(circle at 70% 30%, transparent 0%, #0f0f0f 90%);
 }
 
-/* Content */
-.agent-card-content {
-    padding: 2.5rem 2.5rem 2.5rem 2rem;
+/* Foreground Panels */
+.agent-card-foreground {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
-    gap: 1.8rem;
-    position: relative;
-    z-index: 1;
+    justify-content: space-between;
 }
 
-/* Top row */
-.agent-card-top {
+/* Top Panel */
+.agent-card-top-panel {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
 
-.agent-card-meta {
+.agent-card-id {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.agent-card-number {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.15);
-}
-
-.agent-card-race {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #ff4655;
-    background: rgba(255, 70, 85, 0.08);
-    border: 1px solid rgba(255, 70, 85, 0.2);
-    padding: 0.25rem 0.7rem;
-    border-radius: 2px;
-}
-
-.agent-card-role {
-    display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 0.5rem;
 }
 
-.agent-card-role img {
-    width: 18px;
-    height: 18px;
-    opacity: 0.5;
-    filter: brightness(0) invert(1);
+.agent-card-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    color: #ff4655;
+    letter-spacing: 0.2em;
 }
 
-.agent-card-role span {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
+.agent-card-race-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid #ff4655;
+    color: #ff4655;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.3);
 }
 
-/* Name block */
-.agent-card-name-block {
+.agent-card-role-panel {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 0.8rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.agent-card-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 4rem;
-    letter-spacing: 0.04em;
-    color: #fff;
-    line-height: 1;
-    margin: 0;
+.agent-card-role-panel img {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
 }
 
-.agent-card-desc {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 300;
-    line-height: 1.75;
-    color: rgba(255, 255, 255, 0.4);
-    margin: 0;
-    max-width: 560px;
-}
-
-/* Divider */
-.agent-card-divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.05);
-}
-
-/* Abilities */
-.agent-card-abilities-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.25em;
+.agent-card-role-panel span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.2);
-    display: block;
-    margin-bottom: 1rem;
+    color: #666;
 }
 
-.agent-card-abilities-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.2rem;
+/* Main Panel */
+.agent-card-main-panel {
+    max-width: 500px;
 }
 
-.agent-card-ability {
+.agent-card-big-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 7.5rem); /* Reduced from 12rem */
+    line-height: 0.8;
+    margin: 0 0 1rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+
+.agent-card-biography {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #888;
+}
+
+/* Abilities Panel */
+.agent-card-abilities-panel {
+    border-top: 1px solid #222;
+    padding-top: 2rem;
+}
+
+.agent-card-panel-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: #ff4655;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.3em;
+}
+
+.agent-card-abilities-list {
     display: flex;
-    gap: 0.85rem;
-    align-items: flex-start;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
-.agent-card-ability-icon {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+.agent-card-ability-hex {
+    width: 50px;
+    height: 50px;
+    background: #111;
+    border: 1px solid #333;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: border-color 0.2s ease, background 0.2s ease;
+    position: relative;
+    cursor: help;
+    transition: all 0.3s ease;
 }
 
-.agent-card-ability:hover .agent-card-ability-icon {
-    border-color: rgba(255, 70, 85, 0.3);
-    background: rgba(255, 70, 85, 0.05);
+.agent-card-ability-hex:hover {
+    border-color: #ff4655;
+    background: #ff4655;
 }
 
-.agent-card-ability-icon img {
+.agent-card-ability-hex img {
     width: 28px;
     height: 28px;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
-    opacity: 0.5;
-    transition: opacity 0.2s ease;
+    filter: invert(1);
 }
 
-.agent-card-ability:hover .agent-card-ability-icon img {
+.agent-card-ability-hex:hover img {
+    filter: invert(0);
+}
+
+.ability-hover-info {
+    position: absolute;
+    bottom: 120%;
+    left: 0;
+    width: 280px;
+    background: #111;
+    border: 1px solid #ff4655;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.agent-card-ability-hex:hover .ability-hover-info {
     opacity: 1;
+    transform: translateY(-10px);
 }
 
-.agent-card-ability-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+.ability-hover-info strong {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
 }
 
-.agent-card-ability-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.65);
-}
 
-.agent-card-ability-desc {
+.ability-hover-info p {
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
-    font-weight: 300;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.3);
+    color: #aaa;
+    line-height: 1.5;
     margin: 0;
 }
 
-/* Responsive */
-@media (max-width: 1200px) {
-    .agent-card-abilities-grid {
-        grid-template-columns: 1fr;
-    }
+/* HUD Accents */
+.card-hud-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ff4655;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-@media (max-width: 1024px) {
-    .agent-card {
-        grid-template-columns: 240px 1fr;
-    }
+.agent-card:hover .card-hud-corner { opacity: 1; }
 
-    .agent-card-name {
-        font-size: 3.2rem;
-    }
+.card-hud-corner.tl { top: 1rem; left: 1rem; border-right: none; border-bottom: none; }
+.card-hud-corner.tr { top: 1rem; right: 1rem; border-left: none; border-bottom: none; }
+.card-hud-corner.bl { bottom: 1rem; left: 1rem; border-right: none; border-top: none; }
+.card-hud-corner.br { bottom: 1rem; right: 1rem; border-left: none; border-top: none; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .agent-card { height: auto; }
+    .agent-card-foreground { padding: 2rem; }
+    .agent-card-big-name { font-size: 5rem; }
 }
 
 @media (max-width: 768px) {
-    .agent-card {
-        grid-template-columns: 180px 1fr;
-        min-height: 460px;
-    }
-
-    .agent-card-name {
-        font-size: 2.6rem;
-    }
-
-    .agent-card-content {
-        padding: 1.5rem 1.5rem 1.5rem 1rem;
-        gap: 1.2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .agent-card {
-        grid-template-columns: 1fr;
-    }
-
-    .agent-card-image {
-        height: 340px;
-    }
-
-    .agent-card-image-overlay {
-        background: linear-gradient(to top, #0a0a0a 5%, transparent 50%);
-    }
-
-    .agent-card-content {
-        padding: 1.5rem 1rem;
-    }
+    .agent-card-top-panel { flex-direction: column; gap: 1rem; }
+    .agent-card-main-panel { max-width: 100%; }
+    .agent-card-big-name { font-size: 4rem; margin-top: 1.5rem; }
+    .agent-card-abilities-list { gap: 1rem; }
+    .agent-card-ability-hex { width: 45px; height: 45px; }
 }

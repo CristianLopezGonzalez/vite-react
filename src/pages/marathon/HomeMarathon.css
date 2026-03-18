@@ -1,0 +1,260 @@
+/* Shared HUD elements are now in MarathonHUD.css and scoped under .m-hud-container */
+
+/* Hero */
+.home-marathon {
+    min-height: 100vh;
+    background: #161616;
+    color: #fff;
+    padding-top: 152px; /* 72 + 80 */
+}
+.hm-hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    position: relative;
+    border-bottom: 1px solid #222;
+    overflow: hidden;
+}
+
+.hm-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images6.alphacoders.com/137/thumb-1920-1378440.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(0.5) brightness(0.4);
+    transition: all 0.5s ease;
+}
+
+.hm-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #0d0d0d 20%, transparent 100%);
+}
+
+.hm-hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+}
+
+.hm-hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: #c0fe04;
+    letter-spacing: 0.4em;
+    display: block;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.hm-hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(10rem, 22vw, 16rem);
+    line-height: 0.75;
+    margin: 0 0 2rem;
+    letter-spacing: -0.04em;
+    color: #fff;
+    text-shadow: 0 0 40px rgba(0,0,0,1);
+}
+
+.hm-hero-title-accent {
+    color: #c0fe04;
+}
+
+.hm-hero-desc {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: #ccc;
+    max-width: 800px;
+    margin-bottom: 5rem;
+    letter-spacing: -0.01em;
+}
+
+.hm-hero-stats {
+    display: flex;
+    gap: 3.5rem;
+    align-items: center;
+}
+
+.hm-hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.hm-hero-stat-label { font-size: 0.8rem; color: #555; letter-spacing: 0.2em; text-transform: uppercase; }
+.hm-hero-stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: #fff; line-height: 1; }
+.hm-hero-stat-divider { width: 1px; height: 50px; background: rgba(255,255,255,0.1); }
+
+/* Sections */
+.hm-section {
+    padding: 8rem 10%;
+    background: #0d0d0d;
+}
+
+.hm-section--alt {
+    background: #111;
+    border-top: 1px solid #222;
+}
+
+.hm-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 5rem;
+}
+
+.hm-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5.5rem;
+    margin: 0 0 1.5rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+    line-height: 0.9;
+}
+
+.hm-section-desc {
+    font-size: 1.2rem;
+    color: #888;
+    max-width: 600px;
+}
+
+.hm-section-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: #c0fe04;
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* Preview Grids */
+.hm-runners-preview, .hm-weapons-preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+}
+
+.hm-runner-card {
+    position: relative;
+    background: #151515;
+    border: 1px solid #222;
+    text-decoration: none;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.hm-runner-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.2) brightness(0.8);
+    transition: all 0.5s ease;
+}
+
+.hm-runner-card:hover img {
+    filter: grayscale(0) brightness(1);
+    transform: scale(1.05);
+}
+
+.hm-runner-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.hm-runner-card-model { font-size: 0.65rem; color: #c0fe04; letter-spacing: 0.15em; font-weight: 700; }
+.hm-runner-card-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: #fff; }
+
+.m-card-corner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid rgba(192, 254, 4, 0.3);
+    border-right: 2px solid rgba(192, 254, 4, 0.3);
+}
+
+/* Weapons Preview */
+.hm-weapon-card {
+    background: #151515;
+    border: 1px solid #222;
+    padding: 2.2rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    transition: all 0.4s ease;
+}
+
+.hm-weapon-card:hover { border-color: #c0fe04; background: #1a1a1a; }
+
+.hm-weapon-card-type {
+    font-size: 0.75rem;
+    color: #666;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.hm-weapon-card-img-wrap {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, rgba(192, 254, 4, 0.05) 0%, transparent 70%);
+}
+
+.hm-weapon-card-img-wrap img {
+    max-width: 100%;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+.hm-weapon-card-stats {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #333;
+    padding-top: 1.5rem;
+}
+
+.hm-weapon-card-stats span {
+    display: flex;
+    flex-direction: column;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+.hm-weapon-card-stats em {
+    font-style: normal;
+    font-size: 0.6rem;
+    color: #c0fe04;
+    margin-top: 0.3rem;
+}
+
+@media (max-width: 1200px) {
+    .hm-runners-preview, .hm-weapons-preview { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .home-marathon { padding-top: 220px; }
+    .hm-hero-title { font-size: clamp(5rem, 15vw, 8rem); margin-bottom: 1.5rem; }
+    .hm-hero { padding: 0 5%; height: auto; min-height: 100vh; }
+    .hm-hero-desc { font-size: 1.2rem; margin-bottom: 3rem; }
+    .hm-section-header { flex-direction: column; align-items: flex-start; gap: 2rem; }
+    .hm-runners-preview, .hm-weapons-preview { grid-template-columns: 1fr; }
+}

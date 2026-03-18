@@ -1,16 +1,73 @@
-﻿.home-valorant {
+.home-valorant {
     min-height: 100vh;
-    background: #080808;
+    background: #0f0f0f; /* Lightened from pure black */
     color: #fff;
+    position: relative;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    padding-top: 152px;
 }
 
-/* Hero */
+@media (max-width: 768px) {
+    .home-valorant {
+        padding-top: 220px; /* Accommodate stacked mobile HUD nav */
+    }
+}
+
+/* ─── Immersive HUD Elements ─── */
+.hv-hud-noise {
+    position: fixed;
+    inset: 0;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.hv-hud-vignette {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.3) 100%);
+    pointer-events: none;
+    z-index: 90;
+}
+
+.hv-hud-edge {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgba(255, 70, 85, 0.3);
+    z-index: 95;
+    pointer-events: none;
+}
+
+.hv-hud-edge--top-left { top: 120px; left: 40px; border-right: none; border-bottom: none; }
+.hv-hud-edge--top-right { top: 120px; right: 40px; border-left: none; border-bottom: none; }
+.hv-hud-edge--bottom-left { bottom: 40px; left: 40px; border-right: none; border-top: none; }
+.hv-hud-edge--bottom-right { bottom: 40px; right: 40px; border-left: none; border-top: none; }
+
+.hv-hud-status {
+    position: fixed;
+    top: 140px;
+    left: 60px;
+    z-index: 95;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: #ff4655;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    opacity: 0.6;
+}
+
+/* ─── Hero Section ─── */
 .hv-hero {
     position: relative;
     height: 100vh;
     display: flex;
     align-items: center;
-    overflow: hidden;
+    padding-left: 10%;
+    border-bottom: 2px solid #111;
 }
 
 .hv-hero-bg {
@@ -19,357 +76,292 @@
     background-image: url('https://assets.xboxservices.com/assets/4e/bc/4ebcb533-e184-42f3-833b-9aa47a81f39e.jpg?n=153142244433_Poster-Image-1084_1920x720.jpg');
     background-size: cover;
     background-position: center;
-    filter: grayscale(30%);
-    transition: transform 0.1s ease;
+    filter: grayscale(1) brightness(0.4) contrast(1.2);
 }
 
 .hv-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-            to right,
-            rgba(8, 8, 8, 0.95) 40%,
-            rgba(8, 8, 8, 0.5) 70%,
-            rgba(8, 8, 8, 0.2) 100%
-    );
+    background: linear-gradient(90deg, rgba(15, 15, 15, 0.9) 10%, transparent 100%);
 }
 
 .hv-hero-content {
     position: relative;
-    z-index: 1;
-    padding: 0 3rem;
-    max-width: 700px;
+    z-index: 10;
+    max-width: 1200px;
 }
 
 .hv-hero-tag {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
     color: #ff4655;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
     display: block;
-    margin-bottom: 1.2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 3rem;
+}
+
+.hv-hero-tag::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 2rem;
+    height: 1px;
+    background: #ff4655;
 }
 
 .hv-hero-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(5rem, 14vw, 11rem);
-    line-height: 0.9;
-    letter-spacing: 0.02em;
-    color: #fff;
-    margin: 0 0 1.5rem;
+    font-size: clamp(10rem, 22vw, 16rem); /* Boosted to match Marathon impact */
+    line-height: 0.75;
+    letter-spacing: -0.04em;
+    margin: 0 0 3rem;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
 }
 
 .hv-hero-title-red {
     color: #ff4655;
+    position: relative;
+    z-index: -1;
+    margin-top: -0.2em;
+    margin-left: 0.1em;
+    -webkit-text-stroke: 2px #ff4655;
+    color: transparent;
 }
 
 .hv-hero-desc {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.5);
-    max-width: 480px;
-    margin: 0 0 3rem;
+    max-width: 460px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #888;
+    margin-bottom: 5rem;
 }
 
 .hv-hero-stats {
     display: flex;
-    align-items: center;
-    gap: 2rem;
+    gap: 6rem;
 }
 
 .hv-hero-stat {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
 }
 
 .hv-hero-stat-value {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5rem;
-    letter-spacing: 0.05em;
-    color: #fff;
+    font-size: 5rem;
     line-height: 1;
+    color: #fff;
 }
 
 .hv-hero-stat-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: #888;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.25em;
 }
 
-.hv-hero-stat-divider {
-    width: 1px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* Sections */
+/* ─── Sections ─── */
 .hv-section {
-    padding: 6rem 3rem;
-}
-
-.hv-section--dark {
-    background: #050505;
+    padding: 10rem 10%;
+    background: #0f0f0f;
 }
 
 .hv-section-header {
+    margin-bottom: 6rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 2.5rem;
 }
 
 .hv-section-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    letter-spacing: 0.05em;
-    color: #fff;
-    margin: 0 0 0.5rem;
+    font-size: 6rem;
+    margin: 0;
+    text-transform: uppercase;
 }
 
 .hv-section-desc {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.35);
-    margin: 0;
-    max-width: 400px;
+    color: #444;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
 .hv-section-link {
-    font-family: 'Inter', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.2em;
+    color: #ff4655;
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    white-space: nowrap;
-    transition: color 0.2s ease;
+    border: 1px solid #ff4655;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease;
 }
 
 .hv-section-link:hover {
-    color: #ff4655;
+    background: #ff4655;
+    color: #000;
 }
 
-/* Agents preview */
+/* ─── Agents Preview ─── */
 .hv-agents-preview {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 1px;
-    background: rgba(255, 255, 255, 0.04);
+    gap: 2rem;
 }
 
 .hv-agent-preview-card {
     position: relative;
-    aspect-ratio: 2/3;
+    aspect-ratio: 1/1.5;
+    border: 1px solid #111;
     overflow: hidden;
-    display: block;
-    background: #0d0d0d;
+    transition: all 0.4s ease;
+}
+
+.hv-agent-preview-card:hover {
+    border-color: #ff4655;
 }
 
 .hv-agent-preview-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
-    filter: grayscale(40%);
-    transition: filter 0.3s ease, transform 0.3s ease;
+    filter: grayscale(1) brightness(0.6);
+    transition: all 0.6s ease;
 }
 
 .hv-agent-preview-card:hover img {
-    filter: grayscale(0%);
-    transform: scale(1.05);
+    filter: grayscale(0) brightness(1);
+    transform: scale(1.1);
 }
 
 .hv-agent-preview-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
-    right: 0;
-    padding: 2rem 0.8rem 0.8rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+    width: 100%;
+    background: #ff4655;
+    color: #000;
+    padding: 0.8rem;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 0.08em;
-    color: #fff;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    font-size: 1.4rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
 }
 
 .hv-agent-preview-card:hover .hv-agent-preview-overlay {
-    opacity: 1;
+    transform: translateY(0);
 }
 
-/* Weapons preview */
+/* ─── Weapons Preview ─── */
 .hv-weapons-preview {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: rgba(255, 255, 255, 0.04);
+    gap: 4rem;
 }
 
 .hv-weapon-preview-card {
-    background: #0a0a0a;
-    padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
     text-decoration: none;
-    transition: background 0.2s ease;
+    border-bottom: 2px solid #111;
+    padding-bottom: 2rem;
+    transition: all 0.3s ease;
 }
 
-.hv-weapon-preview-card:hover {
-    background: #111;
-}
+.hv-weapon-preview-card:hover { border-color: #ff4655; }
 
 .hv-weapon-preview-type {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: #444;
+    margin-bottom: 2rem;
     text-transform: uppercase;
-    color: #ff4655;
-    align-self: flex-start;
 }
 
 .hv-weapon-preview-card img {
     width: 100%;
-    max-height: 80px;
+    height: 100px;
     object-fit: contain;
-    filter: drop-shadow(0 4px 16px rgba(255, 70, 85, 0.1));
-    transition: transform 0.3s ease;
+    filter: invert(1);
+    margin-bottom: 2rem;
+    transition: transform 0.4s ease;
 }
 
-.hv-weapon-preview-card:hover img {
-    transform: scale(1.06) translateY(-4px);
-}
+.hv-weapon-preview-card:hover img { transform: translateY(-10px); }
 
 .hv-weapon-preview-name {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 0.05em;
+    font-size: 2.5rem;
     color: #fff;
-    align-self: flex-start;
 }
 
-/* Maps preview */
+/* ─── Maps Preview ─── */
 .hv-maps-preview {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(255, 255, 255, 0.04);
+    gap: 2rem;
 }
 
 .hv-map-preview-card {
     position: relative;
     aspect-ratio: 16/9;
     overflow: hidden;
-    display: block;
-    background: #0d0d0d;
+    border: 1px solid #111;
 }
 
 .hv-map-preview-bg {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(30%);
-    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: grayscale(1) brightness(0.5);
+    transition: all 0.8s ease;
 }
 
 .hv-map-preview-card:hover .hv-map-preview-bg {
-    transform: scale(1.05);
-    filter: grayscale(0%);
-}
-
-.hv-map-preview-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%);
+    filter: grayscale(0.5) brightness(1);
+    transform: scale(1.1);
 }
 
 .hv-map-preview-info {
     position: absolute;
-    bottom: 1.2rem;
-    left: 1.2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
+    bottom: 2rem;
+    left: 2rem;
 }
 
 .hv-map-preview-name {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    letter-spacing: 0.05em;
+    font-size: 3rem;
     color: #fff;
     line-height: 1;
 }
 
 .hv-map-preview-sites {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
     color: #ff4655;
+    text-transform: uppercase;
 }
 
-/* Responsive */
+/* ─── Responsive ─── */
 @media (max-width: 1024px) {
-    .hv-agents-preview {
-        grid-template-columns: repeat(3, 1fr);
-    }
+    .hv-agents-preview { grid-template-columns: repeat(3, 1fr); }
+    .hv-weapons-preview { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-    .hv-hero-content {
-        padding: 0 1.5rem;
-    }
-
-    .hv-section {
-        padding: 4rem 1.5rem;
-    }
-
-    .hv-section-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-
-    .hv-agents-preview {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .hv-weapons-preview {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .hv-maps-preview {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .hv-section {
-        padding: 3rem 1rem;
-    }
-
-    .hv-agents-preview {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .hv-weapons-preview {
-        grid-template-columns: 1fr;
-    }
-}
+    .hv-hero { padding-left: 2rem; }
+    .hv-hero-title { font-size: 8rem; }
+    .hv-section-title { font-size: 4rem; }
+    .hv-hud-edge, .hv-hud-status { display: none; }
+}

@@ -1,32 +1,46 @@
-﻿.agents-page {
+.agents-page {
     min-height: 100vh;
-    background: #080808;
-    padding: 130px 3rem 5rem;
+    background: #0f0f0f;
+    padding: 152px 10% 8rem;
     color: #fff;
+    position: relative;
+}
+
+.agents-page::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 70, 85, 0.03) 1px, transparent 1px);
+    background-size: 100% 4rem;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .agents-header {
     display: flex;
     align-items: baseline;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    gap: 3rem;
+    margin-bottom: 6rem;
+    border-left: 4px solid #ff4655;
+    padding-left: 3rem;
+    position: relative;
+    z-index: 2;
 }
 
 .agents-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    letter-spacing: 0.05em;
+    font-size: clamp(4rem, 12vw, 8rem);
+    letter-spacing: -0.02em;
     color: #fff;
     margin: 0;
+    text-transform: uppercase;
 }
 
 .agents-count {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.25);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: #ff4655;
+    letter-spacing: 0.3em;
 }
 
 .agents-loading {
@@ -44,18 +58,27 @@
 .agents-grid {
     display: flex;
     flex-direction: column;
-    gap: 1px;
-    background: rgba(255, 255, 255, 0.04);
+    gap: 4rem;
+    position: relative;
+    z-index: 2;
 }
 
 @media (max-width: 768px) {
     .agents-page {
-        padding: 130px 1.5rem 4rem;
+        padding: 132px 2rem 4rem;
+    }
+    .agents-header {
+        gap: 1rem;
+        padding-left: 1.5rem;
+        margin-bottom: 3rem;
+    }
+    .agents-title {
+        font-size: 3rem;
     }
 }
 
 @media (max-width: 480px) {
     .agents-page {
-        padding: 130px 1rem 3rem;
+        padding: 132px 1rem 3rem;
     }
 }

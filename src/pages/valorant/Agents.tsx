@@ -1,4 +1,4 @@
-﻿import NavbarValorant from '../../components/valorant/NavbarValorant'
+import NavbarValorant from '../../components/valorant/NavbarValorant'
 import AgentCard from '../../components/valorant/AgentCard'
 import useAgents from '../../hooks/valorant/useAgents.ts'
 import useRoles from '../../hooks/valorant/useRoles.ts'
@@ -16,8 +16,6 @@ const Agents = () => {
 
     const loading = loadingAgents || loadingRoles
 
-    if (errorAgents) return <div className="agents-error">Error al cargar los agentes</div>
-
     return (
         <>
             <NavbarValorant/>
@@ -25,13 +23,23 @@ const Agents = () => {
                 <div className="agents-header">
                     <h1 className="agents-title">Agents</h1>
                     <span className="agents-count">
-            {!loading ? `${agents.length} agents` : '—'}
-          </span>
+                        {!loading ? `${agents.length} agents` : '—'}
+                    </span>
                 </div>
 
                 {loading ? (
-                    <div className="agents-loading">
-                        <span>Loading...</span>
+                    <div className="agents-grid">
+                        {Array.from({ length: 8 }).map((_, i) => (
+                            <div key={i} className="agent-skeleton" />
+                        ))}
+                    </div>
+                ) : errorAgents ? (
+                    <div className="agents-error-container">
+                        <span className="v-error-icon">⚠</span>
+                        <div className="v-error-info">
+                            <span className="v-error-title">SYSTEM_FAILURE</span>
+                            <p className="v-error-text">Failed to retrieve agent profiles. Check uplink status.</p>
+                        </div>
                     </div>
                 ) : (
                     <div className="agents-grid">

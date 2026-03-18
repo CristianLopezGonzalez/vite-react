@@ -1,4 +1,4 @@
-﻿import { useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import NavbarValorant from '../../components/valorant/NavbarValorant'
 import WeaponCard from '../../components/valorant/WeaponCard'
 import useWeapons from '../../hooks/valorant/useWeapons.ts'
@@ -17,8 +17,6 @@ const Weapons = () => {
         [weapons, activeType]
     )
 
-    if (error) return <div className="weapons-error">Error al cargar las armas</div>
-
     return (
         <>
             <NavbarValorant />
@@ -26,8 +24,8 @@ const Weapons = () => {
                 <div className="weapons-header">
                     <h1 className="weapons-title">Weapons</h1>
                     <span className="weapons-count">
-            {!loading ? `${filtered.length} weapons` : '—'}
-          </span>
+                        {!loading ? `${filtered.length} weapons` : '—'}
+                    </span>
                 </div>
 
                 <div className="weapons-filters">
@@ -43,8 +41,18 @@ const Weapons = () => {
                 </div>
 
                 {loading ? (
-                    <div className="weapons-loading">
-                        <span>Loading...</span>
+                    <div className="weapons-grid">
+                        {Array.from({ length: 6 }).map((_, i) => (
+                            <div key={i} className="weapon-skeleton" />
+                        ))}
+                    </div>
+                ) : error ? (
+                    <div className="weapons-error-container">
+                        <span className="v-error-icon">⚠</span>
+                        <div className="v-error-info">
+                            <span className="v-error-title">ARMORY_LOCKDOWN</span>
+                            <p className="v-error-text">Uplink to weapons cache failed. Authorization level insufficient.</p>
+                        </div>
                     </div>
                 ) : (
                     <div className="weapons-grid">

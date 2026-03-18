@@ -1,4 +1,4 @@
-﻿import {Agent} from '../../api/valorant/agents.ts'
+import {Agent} from '../../api/valorant/agents.ts'
 import {Role} from '../../api/valorant/roles.ts'
 import './AgentCard.css'
 
@@ -10,52 +10,51 @@ interface AgentCardProps {
 const AgentCard = ({agent, role}: AgentCardProps) => {
     return (
         <div className="agent-card">
-            <div className="agent-card-image">
-                <div className="agent-card-image-bg"/>
-                <img src={agent.icon} alt={agent.agentName} loading="lazy"/>
-                <div className="agent-card-image-overlay"/>
+            <div className="agent-card-bg">
+                <img src={agent.icon} alt={agent.agentName} loading="lazy" />
+                <div className="agent-card-bg-overlay" />
             </div>
 
-            <div className="agent-card-content">
-                <div className="agent-card-top">
-                    <div className="agent-card-meta">
-            <span className="agent-card-number">
-              {String(agent.agentNumber).padStart(2, '0')}
-            </span>
-                        <span className="agent-card-race">{agent.race}</span>
+            <div className="agent-card-foreground">
+                <div className="agent-card-top-panel">
+                    <div className="agent-card-id">
+                        <span className="agent-card-num">#{String(agent.agentNumber).padStart(2, '0')}</span>
+                        <span className="agent-card-race-tag">{agent.race}</span>
                     </div>
                     {role && (
-                        <div className="agent-card-role">
-                            <img src={role.icon} alt={role.roleName} loading="lazy"/>
+                        <div className="agent-card-role-panel">
+                            <img src={role.icon} alt={role.roleName} />
                             <span>{role.roleName}</span>
                         </div>
                     )}
                 </div>
 
-                <div className="agent-card-name-block">
-                    <h2 className="agent-card-name">{agent.agentName}</h2>
-                    <p className="agent-card-desc">{agent.description}</p>
+                <div className="agent-card-main-panel">
+                    <h2 className="agent-card-big-name">{agent.agentName}</h2>
+                    <p className="agent-card-biography">{agent.description}</p>
                 </div>
 
-                <div className="agent-card-divider"/>
-
-                <div className="agent-card-abilities">
-                    <span className="agent-card-abilities-label">Abilities</span>
-                    <div className="agent-card-abilities-grid">
+                <div className="agent-card-abilities-panel">
+                    <h3 className="agent-card-panel-label">TACTICAL_ABILITIES</h3>
+                    <div className="agent-card-abilities-list">
                         {agent.abilities.map((ability) => (
-                            <div className="agent-card-ability" key={ability.abilityId}>
-                                <div className="agent-card-ability-icon">
-                                    <img src={ability.icon} alt={ability.abilityName} loading="lazy"/>
-                                </div>
-                                <div className="agent-card-ability-info">
-                                    <span className="agent-card-ability-name">{ability.abilityName}</span>
-                                    <p className="agent-card-ability-desc">{ability.description}</p>
+                            <div className="agent-card-ability-hex" key={ability.abilityId} title={ability.abilityName}>
+                                <img src={ability.icon} alt={ability.abilityName} />
+                                <div className="ability-hover-info">
+                                    <strong>{ability.abilityName}</strong>
+                                    <p>{ability.description}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
+            
+            {/* Tactical HUD accents */}
+            <div className="card-hud-corner tl" />
+            <div className="card-hud-corner tr" />
+            <div className="card-hud-corner bl" />
+            <div className="card-hud-corner br" />
         </div>
     )
 }

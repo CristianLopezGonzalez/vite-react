@@ -1,109 +1,98 @@
-﻿.weapons-page {
+.weapons-page {
     min-height: 100vh;
-    background: #080808;
-    padding: 130px 3rem 5rem;
+    background: #0f0f0f;
+    padding: 152px 10% 8rem;
     color: #fff;
+    font-family: 'JetBrains Mono', monospace;
 }
 
 .weapons-header {
     display: flex;
     align-items: baseline;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    gap: 3rem;
+    margin-bottom: 5rem;
+    border-left: 4px solid #ff4655;
+    padding-left: 3rem;
 }
 
 .weapons-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    letter-spacing: 0.05em;
+    font-size: clamp(4rem, 12vw, 8rem);
+    letter-spacing: -0.02em;
     color: #fff;
     margin: 0;
+    text-transform: uppercase;
 }
 
 .weapons-count {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.25);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: #ff4655;
+    letter-spacing: 0.3em;
 }
 
 .weapons-filters {
     display: flex;
-    gap: 0.5rem;
     flex-wrap: wrap;
-    margin-bottom: 2.5rem;
+    gap: 1rem;
+    margin-bottom: 6rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #111;
 }
 
 .weapons-filter-btn {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.35);
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 0.4rem 1rem;
+    border: 1px solid transparent;
+    color: #555;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .weapons-filter-btn:hover {
     color: #fff;
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 70, 85, 0.05);
 }
 
 .weapons-filter-btn.active {
-    color: #ff4655;
-    border-color: rgba(255, 70, 85, 0.4);
-    background: rgba(255, 70, 85, 0.06);
-}
-
-.weapons-loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-color: #ff4655;
+    background: rgba(255, 70, 85, 0.1);
 }
 
 .weapons-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: rgba(255, 255, 255, 0.04);
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 3rem;
 }
 
-@media (max-width: 1200px) {
-    .weapons-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+.weapons-loading, .weapons-error {
+    display: flex;
+    justify-content: center;
+    padding: 10rem 0;
+    color: #444;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
 }
 
-@media (max-width: 900px) {
-    .weapons-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+@media (max-width: 1024px) {
+    .weapons-page { padding: 130px 5% 5rem; }
+    .weapons-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
-    .weapons-page {
-        padding: 130px 1.5rem 4rem;
-    }
+    .weapons-page { padding: 132px 2rem 4rem; }
+    .weapons-header { flex-direction: column; gap: 0.5rem; padding-left: 1.5rem; margin-bottom: 3rem; }
+    .weapons-title { font-size: 3rem; }
+    .weapons-filters { gap: 0.5rem; padding: 1rem; }
+    .weapons-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
 
 @media (max-width: 480px) {
-    .weapons-page {
-        padding: 130px 1rem 3rem;
-    }
-
-    .weapons-grid {
-        grid-template-columns: 1fr;
-    }
+    .weapons-grid { grid-template-columns: 1fr; }
 }

@@ -1,0 +1,138 @@
+.m-weapons-page {
+    min-height: 100vh;
+    background: #161616;
+    padding: 180px 10% 8rem;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.m-weapons-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 6rem;
+    border-left: 4px solid #c0fe04;
+    padding-left: 3rem;
+}
+
+.m-header-tag {
+    font-size: 0.9rem;
+    color: #555;
+    letter-spacing: 0.4em;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.m-header-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 7rem;
+    color: #fff;
+    margin: 0;
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+}
+
+.m-header-count {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.m-count-label {
+    font-size: 0.6rem;
+    color: #444;
+    letter-spacing: 0.23em;
+}
+
+.m-count-val {
+    font-size: 1.5rem;
+    color: #c0fe04;
+    font-weight: 700;
+}
+
+.m-weapons-grid-section {
+    position: relative;
+    z-index: 10;
+}
+
+.m-weapons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+/* Skeleton */
+.m-weapons-skeleton {
+    aspect-ratio: 1/1.2;
+    background: #050505;
+    border: 1px solid #111;
+    position: relative;
+    overflow: hidden;
+}
+
+.m-weapons-skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(192, 254, 4, 0.03), transparent);
+    animation: m-shimmer 1.5s infinite;
+}
+
+@keyframes m-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Error */
+.m-weapons-error {
+    padding: 10rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    border: 1px solid rgba(192, 254, 4, 0.1);
+    background: rgba(192, 254, 4, 0.02);
+}
+
+.m-error-icon {
+    font-size: 4rem;
+    color: #c0fe04;
+    animation: m-blink 1s steps(1) infinite;
+}
+
+@keyframes m-blink {
+    50% { opacity: 0; }
+}
+
+.m-error-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.m-error-title {
+    font-size: 1.2rem;
+    color: #c0fe04;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+}
+
+.m-error-text {
+    font-size: 0.8rem;
+    color: #666;
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    .m-weapons-page { padding: 130px 5% 5rem; }
+}
+
+@media (max-width: 768px) {
+    .m-weapons-page { padding-top: 240px; }
+    .m-weapons-header { flex-direction: column; align-items: flex-start; gap: 2rem; padding-left: 1.5rem; }
+    .m-header-count { align-items: flex-start; }
+    .m-weapons-grid { grid-template-columns: 1fr; }
+}

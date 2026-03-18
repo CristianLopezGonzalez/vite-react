@@ -1,0 +1,85 @@
+/* Strictly Scoped Marathon HUD Styles */
+
+/* 
+   All Marathon-specific HUD elements are hidden by default. 
+   They MUST be wrapped in a .marathon-hud-container to be visible.
+*/
+.marathon-hud-noise,
+.marathon-hud-vignette,
+.marathon-hud-edge,
+.marathon-hud-status-bar {
+    display: none !important;
+}
+
+.marathon-hud-container .marathon-hud-noise,
+.marathon-hud-container .marathon-hud-vignette,
+.marathon-hud-container .marathon-hud-edge,
+.marathon-hud-container .marathon-hud-status-bar {
+    display: block !important;
+}
+
+/* Container Base */
+.marathon-hud-container {
+    min-height: 100vh;
+    background: #161616; /* Lightened from pure black */
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    position: relative;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+/* Structural HUD Elements */
+.marathon-hud-noise {
+    position: fixed;
+    inset: 0;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.015; /* Barely there for texture */
+    pointer-events: none;
+    z-index: 9000;
+}
+
+.marathon-hud-vignette {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.3) 100%);
+    pointer-events: none;
+    z-index: 8000;
+}
+
+.marathon-hud-edge {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(192, 254, 4, 0.4);
+    z-index: 10000;
+    pointer-events: none;
+    box-shadow: 0 0 15px rgba(192, 254, 4, 0.1);
+}
+
+/* Laser disabled as per user request */
+.marathon-hud-scan-laser {
+    display: none !important;
+}
+
+.m-edge-tl { top: 30px; left: 30px; border-right: 0; border-bottom: 0; }
+.m-edge-tr { top: 30px; right: 30px; border-left: 0; border-bottom: 0; }
+.m-edge-bl { bottom: 30px; left: 30px; border-right: 0; border-top: 0; }
+.m-edge-br { bottom: 30px; right: 30px; border-left: 0; border-top: 0; }
+
+.marathon-hud-status-bar {
+    position: fixed;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(192, 254, 4, 0.1);
+    z-index: 9500;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.marathon-hud-status-bar .m-status-label { font-size: 0.55rem; color: #444; margin-right: 0.5rem; }
+.marathon-hud-status-bar .m-status-value { font-size: 0.55rem; color: #c0fe04; letter-spacing: 0.2em; font-weight: 700; }

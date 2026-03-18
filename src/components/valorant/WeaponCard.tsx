@@ -1,68 +1,88 @@
-﻿import {Weapon} from '../../api/valorant/weapons.ts'
+import { Weapon } from '../../api/valorant/weapons.ts'
 import './WeaponCard.css'
 
 interface WeaponCardProps {
     weapon: Weapon
 }
 
-const StatBar = ({label, value, max}: { label: string; value: number; max: number }) => {
+const StatBar = ({ label, value, max, color = '#ff4655' }: { label: string; value: number; max: number, color?: string }) => {
     const percentage = Math.min((value / max) * 100, 100)
     return (
-        <div className="weapon-stat">
-            <div className="weapon-stat-header">
-                <span className="weapon-stat-label">{label}</span>
-                <span className="weapon-stat-value">{value}</span>
+        <div className="weapon-stat-panel">
+            <div className="weapon-stat-data">
+                <span className="weapon-stat-tag">{label}</span>
+                <span className="weapon-stat-num">{value}</span>
             </div>
-            <div className="weapon-stat-bar">
-                <div className="weapon-stat-fill" style={{width: `${percentage}%`}}/>
+            <div className="weapon-stat-track">
+                <div 
+                    className="weapon-stat-fill" 
+                    style={{ 
+                        width: `${percentage}%`,
+                        backgroundColor: color 
+                    }} 
+                />
             </div>
         </div>
     )
 }
 
-const WeaponCard = ({weapon}: WeaponCardProps) => {
+const WeaponCard = ({ weapon }: WeaponCardProps) => {
     return (
-        <div className="weapon-card">
-            <div className="weapon-card-type">{weapon.type}</div>
-
-            <div className="weapon-card-image">
-                <img src={weapon.icon} alt={weapon.weaponName} loading="lazy"/>
-            </div>
-
-            <div className="weapon-card-body">
-                <div className="weapon-card-title">
-                    <h2 className="weapon-card-name">{weapon.weaponName}</h2>
-                    <span className="weapon-card-firemode">{weapon.fireMode}</span>
+        <div className="v-weapon-card">
+            {/* Background Accent */}
+            <div className="v-weapon-card-glow" />
+            
+            <div className="v-weapon-card-header">
+                <div className="v-weapon-id-wrap">
+                    <span className="v-weapon-serial">// ARCHIVE_{weapon.weaponId}</span>
+                    <span className="v-weapon-type-tag">{weapon.type.toUpperCase()}</span>
                 </div>
-
-                <p className="weapon-card-desc">{weapon.description}</p>
-
-                <div className="weapon-card-divider"/>
-
-                <div className="weapon-card-info-grid">
-                    <div className="weapon-card-info-item">
-                        <span className="weapon-card-info-label">Fire Rate</span>
-                        <span className="weapon-card-info-val">{weapon.fireRate} rds/s</span>
-                    </div>
-                    <div className="weapon-card-info-item">
-                        <span className="weapon-card-info-label">Reload</span>
-                        <span className="weapon-card-info-val">{weapon.reloadSpeed}s</span>
-                    </div>
-                    <div className="weapon-card-info-item">
-                        <span className="weapon-card-info-label">Magazine</span>
-                        <span className="weapon-card-info-val">{weapon.magazine}</span>
-                    </div>
-                </div>
-
-                <div className="weapon-card-divider"/>
-
-                <div className="weapon-card-stats">
-                    <span className="weapon-card-stats-title">Damage</span>
-                    <StatBar label="Head" value={weapon.headDamage} max={255}/>
-                    <StatBar label="Body" value={weapon.bodyDamage} max={255}/>
-                    <StatBar label="Legs" value={weapon.legDamage} max={255}/>
+                <div className="v-weapon-status">
+                    <span className="v-status-dot" />
+                    <span className="v-status-text">ARMAMENT_READY</span>
                 </div>
             </div>
+
+            <div className="v-weapon-card-main">
+                <div className="v-weapon-visual">
+                    <img src={weapon.icon} alt={weapon.weaponName} className="v-weapon-img" />
+                    <div className="v-weapon-backdrop-text">{weapon.weaponName}</div>
+                </div>
+
+                <div className="v-weapon-identity">
+                    <h2 className="v-weapon-name">{weapon.weaponName}</h2>
+                    <div className="v-weapon-meta">
+                        <span className="v-meta-item">MODE: {weapon.fireMode.toUpperCase()}</span>
+                        <span className="v-meta-divider" />
+                        <span className="v-meta-item">MAG: {weapon.magazine}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div className="v-weapon-card-footer">
+                <div className="v-weapon-stats-grid">
+                    <StatBar label="HEAD" value={weapon.headDamage} max={200} />
+                    <StatBar label="BODY" value={weapon.bodyDamage} max={200} />
+                    <StatBar label="LEGS" value={weapon.legDamage} max={200} />
+                </div>
+                
+                <div className="v-weapon-technical-data">
+                    <div className="v-tech-item">
+                        <span className="v-tech-label">FIRE_RATE</span>
+                        <span className="v-tech-val">{weapon.fireRate}<small>rds/s</small></span>
+                    </div>
+                    <div className="v-tech-item">
+                        <span className="v-tech-label">RELOAD</span>
+                        <span className="v-tech-val">{weapon.reloadSpeed}<small>sec</small></span>
+                    </div>
+                </div>
+            </div>
+
+            {/* Tactical Decals */}
+            <div className="v-weapon-decal v-decal-tl">+</div>
+            <div className="v-weapon-decal v-decal-tr">+</div>
+            <div className="v-weapon-decal v-decal-bl">+</div>
+            <div className="v-weapon-decal v-decal-br">+</div>
         </div>
     )
 }
