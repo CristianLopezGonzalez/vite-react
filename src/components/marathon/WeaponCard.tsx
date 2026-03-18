@@ -12,7 +12,7 @@ const WeaponCard = ({ weapon }: Props) => {
             <div className="m-weapon-card-header">
                 <div>
                     <span className="m-weapon-type">{weapon.type.toUpperCase()}</span>
-                    <h3 className="m-weapon-name">{weapon.type}</h3>
+                    <h3 className="m-weapon-name">{weapon.weaponName}</h3>
                 </div>
             </div>
 
