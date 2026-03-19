@@ -8,6 +8,8 @@ const NavbarMarathon = () => {
         { label: 'Home', path: '/marathon' },
         { label: 'Runners', path: '/marathon/runners' },
         { label: 'Weapons', path: '/marathon/weapons' },
+        { label: 'Abilities', path: '/marathon/runner-abilities' },
+        { label: 'Factions', path: '/marathon/factions' },
     ]
 
     return (

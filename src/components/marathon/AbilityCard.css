@@ -1,0 +1,110 @@
+.m-ability-card {
+    background: #1f1f1f;
+    border: 1px solid #333;
+    padding: 2.5rem;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.m-ability-card:hover {
+    border-color: #c0fe04;
+    background: #151515;
+}
+
+.m-ability-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.m-ability-type {
+    font-size: 0.8rem;
+    color: #c0fe04;
+    letter-spacing: 0.25em;
+    font-weight: 700;
+}
+
+.m-ability-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    margin: 0.5rem 0 0;
+    color: #fff;
+    letter-spacing: 0.05em;
+    line-height: 1;
+}
+
+.m-ability-visual {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, rgba(192, 254, 4, 0.03) 0%, transparent 80%);
+}
+
+.m-ability-visual img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.m-ability-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.m-stat-box.full-width {
+    width: 100%;
+}
+
+.m-stat-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #111;
+}
+
+.m-stat-label { 
+    font-size: 0.7rem; 
+    color: #555; 
+    letter-spacing: 0.2rem; 
+    font-weight: 700; 
+    text-transform: uppercase;
+}
+
+.m-stat-value { 
+    font-size: 1.8rem; 
+    color: #c0fe04; 
+    font-weight: 900; 
+    line-height: 1;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.m-intel-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.m-intel-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #888;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.m-card-corner {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border: 1px solid #c0fe04;
+    opacity: 0.3;
+}
+.m-card-corner.tl { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.m-card-corner.br { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }

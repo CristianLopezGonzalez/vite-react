@@ -15,6 +15,8 @@ const ValorantRoles = lazy(() => import('./pages/valorant/Roles.tsx'))
 const HomeMarathon = lazy(() => import('./pages/marathon/HomeMarathon.tsx'))
 const MarathonRunners = lazy(() => import('./pages/marathon/Runners.tsx'))
 const MarathonWeapons = lazy(() => import('./pages/marathon/Weapons.tsx'))
+const MarathonAbilities = lazy(() => import('./pages/marathon/RunnerAbilities.tsx'))
+const MarathonFactions = lazy(() => import('./pages/marathon/Factions.tsx'))
 
 const App = () => {
     return (
@@ -34,6 +36,8 @@ const App = () => {
                     <Route path="/marathon" element={<HomeMarathon/>}/>
                     <Route path="/marathon/runners" element={<MarathonRunners/>}/>
                     <Route path="/marathon/weapons" element={<MarathonWeapons/>}/>
+                    <Route path="/marathon/runner-abilities" element={<MarathonAbilities/>}/>
+                    <Route path="/marathon/factions" element={<MarathonFactions/>}/>
                 </Routes>
             </Suspense>
             <Footer/>
