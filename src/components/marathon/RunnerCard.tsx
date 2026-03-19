@@ -8,19 +8,7 @@ interface Props {
 const RunnerCard = ({ runner }: Props) => {
     return (
         <div className="m-runner-dossier">
-            {/* HUD Header */}
-            <div className="m-runner-header">
-                <div className="m-runner-serial">
-                    <span className="m-runner-id">// RUNNER_{runner.runnerId}</span>
-                    <span className="m-runner-model-tag">{runner.model}</span>
-                </div>
-                <div className="m-runner-status">
-                    <span className="m-status-pulse" />
-                    <span className="m-status-text">ACTIVE</span>
-                </div>
-            </div>
-
-            {/* Portrait Panel */}
+            {/* Portrait Panel (Left) */}
             <div className="m-runner-portrait-wrap">
                 <div className="m-portrait-bg-grid" />
                 <img
@@ -28,15 +16,29 @@ const RunnerCard = ({ runner }: Props) => {
                     alt={runner.runnerName}
                     className="m-runner-img"
                 />
-                <div className="m-portrait-overlay" />
             </div>
 
-            {/* Info Panel */}
-            <div className="m-runner-info">
-                <h3 className="m-runner-name">{runner.runnerName}</h3>
-                <div className="m-intel-block">
-                    <span className="m-intel-tag">CLASS_INTEL:</span>
-                    <p className="m-intel-desc">{runner.description}</p>
+            {/* Content Panel (Right) */}
+            <div className="m-card-content-right">
+                {/* HUD Header */}
+                <div className="m-runner-header">
+                    <div className="m-runner-serial">
+                        <span className="m-runner-id">// RUNNER_{runner.runnerId}</span>
+                        <span className="m-runner-model-tag">{runner.model}</span>
+                    </div>
+                    <div className="m-runner-status">
+                        <span className="m-status-pulse" />
+                        <span className="m-status-text">ACTIVE</span>
+                    </div>
+                </div>
+
+                {/* Info Panel */}
+                <div className="m-runner-info">
+                    <h3 className="m-runner-name">{runner.runnerName}</h3>
+                    <div className="m-intel-block">
+                        <span className="m-intel-tag">CLASS_INTEL:</span>
+                        <p className="m-intel-desc">{runner.description}</p>
+                    </div>
                 </div>
             </div>
 

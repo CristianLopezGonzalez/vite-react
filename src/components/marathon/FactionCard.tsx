@@ -8,30 +8,33 @@ interface Props {
 const FactionCard = ({ faction }: Props) => {
     return (
         <div className="m-faction-card">
-            {/* Header */}
-            <div className="m-faction-card-header">
-                <div>
-                    <span className="m-faction-id">// FACTION_{faction.factionId.toString().padStart(3, '0')}</span>
-                    <h3 className="m-faction-name">{faction.factionName}</h3>
-                </div>
-            </div>
-
-            {/* Visual */}
+            {/* Visual (Left) */}
             <div className="m-faction-visual">
                 <img src={faction.icon} alt={faction.factionName} className="m-faction-icon" />
             </div>
 
-            {/* Info */}
-            <div className="m-faction-info">
-                <div className="m-leader-box">
-                    <span className="m-stat-label">LEADER</span>
-                    <span className="m-stat-value-text">{faction.leader}</span>
+            {/* Content (Right) */}
+            <div className="m-card-content-right">
+                {/* Header */}
+                <div className="m-faction-card-header">
+                    <div>
+                        <span className="m-faction-id">// FACTION_{faction.factionId.toString().padStart(3, '0')}</span>
+                        <h3 className="m-faction-name">{faction.factionName}</h3>
+                    </div>
                 </div>
-            </div>
 
-            {/* Intel */}
-            <div className="m-intel-block">
-                <p className="m-intel-text">{faction.description}</p>
+                {/* Info */}
+                <div className="m-faction-info">
+                    <div className="m-leader-box">
+                        <span className="m-stat-label">LEADER</span>
+                        <span className="m-stat-value-text">{faction.leader}</span>
+                    </div>
+                </div>
+
+                {/* Intel */}
+                <div className="m-intel-block">
+                    <p className="m-intel-text">{faction.description}</p>
+                </div>
             </div>
 
             {/* HUD Accents */}

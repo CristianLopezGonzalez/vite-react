@@ -12,7 +12,7 @@ export interface MarathonAbility {
 
 const getAllAbilities = async (): Promise<MarathonAbility[]> => {
     try {
-        const response = await api.get('/marathon/runner-abilities');
+        const response = await api.get('/marathon/abilities');
         return response.data?.data || [];
     } catch (e) {
         return [];
