@@ -1,6 +1,7 @@
+/* ─── Factions Page ─── */
 .m-factions-page {
     min-height: 100vh;
-    background: #161616;
+    background: #0d0d0d;
     padding: 180px 10% 8rem;
     color: #fff;
     font-family: 'JetBrains Mono', monospace;
@@ -10,47 +11,9 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 6rem;
-    border-left: 4px solid #c0fe04;
-    padding-left: 3rem;
-}
-
-.m-header-tag {
-    font-size: 0.9rem;
-    color: #555;
-    letter-spacing: 0.4em;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.m-header-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 7rem;
-    color: #fff;
-    margin: 0;
-    line-height: 0.9;
-    letter-spacing: 0.02em;
-}
-
-.m-header-count {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.5rem;
-    text-align: right;
-    font-family: 'JetBrains Mono', monospace;
-}
-
-.m-count-label {
-    font-size: 0.6rem;
-    color: #444;
-    letter-spacing: 0.23em;
-}
-
-.m-count-val {
-    font-size: 1.5rem;
-    color: #c0fe04;
-    font-weight: 700;
+    margin-bottom: 5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #1e1e1e;
 }
 
 .m-factions-grid-section {
@@ -60,15 +23,15 @@
 
 .m-factions-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+    gap: 1.5rem;
 }
 
 /* Skeleton */
 .m-factions-skeleton {
-    aspect-ratio: 1/1.2;
-    background: #050505;
-    border: 1px solid #111;
+    height: 200px;
+    background: #111;
+    border: 1px solid #1e1e1e;
     position: relative;
     overflow: hidden;
 }
@@ -92,38 +55,36 @@
     background: rgba(192, 254, 4, 0.02);
 }
 
-.m-error-icon {
-    font-size: 4rem;
-    color: #c0fe04;
-    animation: m-blink 1s steps(1) infinite;
-}
-
-.m-error-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.m-error-title {
-    font-size: 1.2rem;
-    color: #c0fe04;
-    font-weight: 800;
-    letter-spacing: 0.3em;
-}
-
-.m-error-text {
-    font-size: 0.8rem;
-    color: #666;
-    margin: 0;
+@media (max-width: 1200px) {
+    .m-factions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 1024px) {
-    .m-factions-page { padding: 130px 5% 5rem; }
+    .m-factions-page {
+        padding: 140px 5% 5rem;
+    }
+
+    .m-factions-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
-    .m-factions-page { padding-top: 240px; }
-    .m-factions-header { flex-direction: column; align-items: flex-start; gap: 2rem; padding-left: 1.5rem; }
-    .m-header-count { align-items: flex-start; }
-    .m-factions-grid { grid-template-columns: 1fr; }
+    .m-factions-page {
+        padding-top: 240px;
+    }
+
+    .m-factions-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .m-factions-page {
+        padding: 240px 1rem 3rem;
+    }
 }

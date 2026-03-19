@@ -21,7 +21,7 @@ const HomeValorant = () => {
                 <div className="hv-hud-edge hv-hud-edge--bottom-right" />
                 <div className="hv-hud-noise" />
                 <div className="hv-hud-vignette" />
-                
+
                 <div className="hv-hud-status">
                     <div className="hv-hud-status-line">SYSTEM: ONLINE</div>
                     <div className="hv-hud-status-line">ACCESS_LEVEL: ADMIN</div>

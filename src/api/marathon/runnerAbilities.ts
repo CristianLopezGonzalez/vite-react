@@ -4,10 +4,16 @@ export interface MarathonAbility {
     abilityId: number
     abilityName: string
     description: string
-    cooldown: number
     type: string
     icon: string
-    runnerId?: number
+    runnerId: number
+    runner: {
+        runnerId: number
+        runnerName: string
+        description: string
+        Model: string
+        icon: string
+    }
 }
 
 const getAllAbilities = async (): Promise<MarathonAbility[]> => {

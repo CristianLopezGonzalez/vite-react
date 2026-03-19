@@ -1,174 +1,499 @@
-.home {
+/* ─── Global WikiGames Home ─── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+.wg-home {
     min-height: 100vh;
-    background: #000;
+    background: #080808;
     color: #fff;
+    overflow-x: hidden;
 }
 
-/* ─── Brutalist Hero ─── */
-.home-brutal-hero {
-    height: 100vh;
+/* Noise grain */
+.wg-noise {
+    position: fixed;
+    inset: 0;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* ─── Hero ─── */
+.wg-hero {
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    padding: 0 4rem;
+    padding: 10rem 10% 6rem;
     position: relative;
-    border-bottom: 2px solid #fff;
+    overflow: hidden;
 }
 
-.hb-hero-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 2rem;
-}
-
-.hb-hero-tag {
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    border: 1px solid #fff;
-    padding: 0.4rem 1rem;
-}
-
-.hb-hero-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(4rem, 18vw, 15rem);
-    line-height: 0.8;
-    margin: 0;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-}
-
-.hb-hero-name-outline {
-    display: block;
-    color: transparent;
-    -webkit-text-stroke: 1.5px #fff;
-}
-
-.hb-hero-bottom {
-    margin-top: 4rem;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
-    align-items: start;
-}
-
-.hb-hero-desc {
-    font-size: 1.2rem;
-    font-weight: 300;
-    line-height: 1.6;
-    color: #888;
-    max-width: 400px;
-}
-
-/* ─── Project Grid Section ─── */
-.home-section {
-    padding: 8rem 4rem;
-}
-
-.home-section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 5rem;
-    margin-bottom: 4rem;
-    border-left: 8px solid #fff;
-    padding-left: 2rem;
-}
-
-.home-tech-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.home-tech-card {
-    border: 2px solid #333;
-    padding: 3rem;
-    transition: all 0.3s ease;
-}
-
-.home-tech-card:hover {
-    border-color: #fff;
-    background: #fff;
-    color: #000;
-}
-
-.home-tech-icon {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    display: block;
-}
-
-.home-tech-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5rem;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.home-tech-desc {
-    font-size: 0.9rem;
+/* Animated perspectival grid background */
+.wg-hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-position: center center;
+    animation: wg-grid-drift 20s linear infinite;
+    transform: perspective(1000px) rotateX(20deg) scale(1.3);
+    transform-origin: center bottom;
     opacity: 0.6;
 }
 
-.home-tech-card:hover .home-tech-desc {
-    opacity: 1;
+@keyframes wg-grid-drift {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 60px; }
 }
 
-/* ─── Horizontal Links ─── */
-.home-links-container {
-    margin-top: 6rem;
-    border-top: 2px solid #fff;
-}
-
-.home-link-row {
+.wg-hero-content {
+    position: relative;
+    z-index: 10;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 3rem 0;
-    border-bottom: 1px solid #333;
-    text-decoration: none;
+    text-align: center;
+    gap: 2rem;
+    max-width: 900px;
+}
+
+/* Eyebrow */
+.wg-hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: #555;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    animation: wg-fade-up 0.8s ease both;
+}
+
+.wg-eyebrow-line {
+    flex: 1;
+    height: 1px;
+    background: #1e1e1e;
+    max-width: 80px;
+}
+
+/* Hero title */
+.wg-hero-title {
+    display: flex;
+    flex-direction: column;
+    line-height: 0.85;
+    margin: 0;
+    animation: wg-fade-up 0.8s 0.1s ease both;
+}
+
+.wg-hero-title-top {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 15vw, 15rem);
     color: #fff;
+    letter-spacing: 0.08em;
+    background: linear-gradient(to right, #fff, #888, #fff);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: wg-shine 4s linear infinite;
+}
+
+@keyframes wg-shine {
+    to { background-position: 200% center; }
+}
+
+.wg-hero-title-bot {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 15vw, 15rem);
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255,255,255,0.25);
+    letter-spacing: 0.08em;
+    position: relative;
+}
+
+.wg-hero-title-bot::after {
+    content: 'GAMES';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: transparent;
+    -webkit-text-stroke: 2px #fff;
+    clip-path: polygon(0 0, 0% 0, 0% 100%, 0 100%);
+    animation: slideLine 4s cubic-bezier(0.77, 0, 0.175, 1) infinite alternate;
+}
+
+@keyframes slideLine {
+    0% { clip-path: polygon(0 0, 0% 0, 0% 100%, 0 100%); }
+    20%, 100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}
+
+/* Description */
+.wg-hero-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #666;
+    max-width: 600px;
+    animation: wg-fade-up 0.8s 0.2s ease both;
+}
+
+/* CTA buttons */
+.wg-hero-cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: wg-fade-up 0.8s 0.3s ease both;
+}
+
+.wg-cta-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border: 1px solid;
     transition: all 0.3s ease;
 }
 
-.home-link-row:hover {
-    padding-left: 2rem;
-    background: #111;
+.wg-cta-valorant {
+    color: #ff4655;
+    border-color: rgba(255, 70, 85, 0.4);
+    background: rgba(255, 70, 85, 0.05);
+}
+.wg-cta-valorant:hover { background: rgba(255, 70, 85, 0.15); border-color: #ff4655; }
+
+.wg-cta-marathon {
+    color: #c0fe04;
+    border-color: rgba(192, 254, 4, 0.4);
+    background: rgba(192, 254, 4, 0.05);
+}
+.wg-cta-marathon:hover { background: rgba(192, 254, 4, 0.12); border-color: #c0fe04; }
+
+/* Scroll hint */
+.wg-hero-scroll-hint {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem;
+    color: #333;
+    letter-spacing: 0.3em;
+    animation: wg-fade-up 1s 0.5s ease both;
 }
 
-.home-link-text {
+.wg-scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, #444);
+    animation: wg-scroll-pulse 2s ease infinite;
+}
+
+@keyframes wg-scroll-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* ─── Section Labels ─── */
+.wg-section-label {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: #444;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+}
+
+.wg-label-line {
+    width: 3rem;
+    height: 1px;
+    background: #1e1e1e;
+    flex-shrink: 0;
+}
+
+/* ─── Games Section ─── */
+.wg-games-section {
+    padding: 8rem 10%;
+    background: #080808;
+}
+
+.wg-games-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+}
+
+.wg-game-card-wrapper {
+    height: 70vh;
+    display: block;
+    z-index: 10;
+}
+
+.wg-game-card {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.wg-game-card-bg {
+    position: absolute;
+    inset: -5%; /* slightly larger so it can scale without clipping */
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(0.8) brightness(0.3);
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+.wg-game-card-wrapper:hover .wg-game-card-bg {
+    filter: grayscale(0) brightness(0.6);
+    transform: scale(1.04);
+}
+
+.wg-game-card-wrapper:hover .wg-game-card {
+    border-color: rgba(255,255,255,0.2);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+}
+
+.wg-game-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(8,8,8,0.98) 0%,
+        rgba(8,8,8,0.6) 40%,
+        transparent 100%
+    );
+}
+
+.wg-game-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    z-index: 2;
+}
+
+.wg-game-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.wg-game-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 4rem;
+    font-size: clamp(3rem, 6vw, 6rem);
+    color: #fff;
+    margin: 0;
+    line-height: 0.9;
+    letter-spacing: 0.04em;
 }
 
-.home-link-arrow {
-    font-size: 3rem;
+.wg-game-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #888;
+    line-height: 1.6;
+    max-width: 380px;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.wg-game-card-wrapper:hover .wg-game-desc {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.wg-game-enter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    border: 1px solid;
+    padding: 0.6rem 1.2rem;
+    width: fit-content;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.4s 0.05s ease;
+}
+
+.wg-game-card:hover .wg-game-enter {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ─── Tech Section ─── */
+.wg-tech-section {
+    padding: 8rem 10%;
+    background: #0c0c0c;
+    border-top: 1px solid #111;
+}
+
+.wg-tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.wg-tech-card-wrapper {
+    display: block;
+    height: 180px; /* fixed height for 3D card */
+}
+
+.wg-tech-card {
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+}
+
+.wg-tech-card-wrapper:hover .wg-tech-card {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.wg-tech-icon {
+    font-size: 2.5rem;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.wg-tech-card-wrapper:hover .wg-tech-icon {
+    opacity: 1;
+    color: #c0fe04; /* Glowy accent */
+    filter: drop-shadow(0 0 10px rgba(192, 254, 4, 0.5));
+}
+
+.wg-tech-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: #fff;
+    line-height: 1;
+}
+
+.wg-tech-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* ─── About Section ─── */
+.wg-about-section {
+    padding: 8rem 10%;
+    border-top: 1px solid #111;
+}
+
+.wg-about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: start;
+}
+
+.wg-about-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 5vw, 6rem);
+    color: #fff;
+    margin: 1rem 0 0;
+    line-height: 0.9;
+}
+
+.wg-about-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.8;
+    margin: 0 0 3rem;
+}
+
+.wg-about-text strong { color: #fff; font-weight: 600; }
+
+.wg-about-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid #1e1e1e;
+}
+
+.wg-about-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: #555;
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #1e1e1e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.wg-about-link:hover {
+    color: #fff;
+    padding-left: 1rem;
+}
+
+/* ─── Fade-up animation ─── */
+@keyframes wg-fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ─── Responsive ─── */
 @media (max-width: 1024px) {
-    .home-brutal-hero {
-        padding: 0 2rem;
-    }
-    .hb-hero-bottom {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
+    .wg-games-grid { grid-template-columns: 1fr; }
+    .wg-game-card  { height: 55vh; }
+    .wg-tech-grid  { grid-template-columns: repeat(3, 1fr); }
+    .wg-about-inner { grid-template-columns: 1fr; gap: 4rem; }
 }
 
 @media (max-width: 768px) {
-    .hb-hero-name {
-        font-size: 15vw;
-    }
-    .home-section-title {
-        font-size: 3.5rem;
-    }
-    .home-link-text {
-        font-size: 2.5rem;
-    }
+    .wg-hero { padding: 8rem 5% 5rem; }
+    .wg-games-section,
+    .wg-tech-section,
+    .wg-about-section { padding: 5rem 5%; }
+    .wg-tech-grid { grid-template-columns: repeat(2, 1fr); }
+    .wg-game-card { height: 50vh; }
+    .wg-game-card-content { padding: 2rem; }
+    .wg-hero-cta-row { flex-direction: column; align-items: center; }
 }
- .hp-hero-name {
-        font-size: clamp(3rem, 15vw, 6rem);
-    }
-}

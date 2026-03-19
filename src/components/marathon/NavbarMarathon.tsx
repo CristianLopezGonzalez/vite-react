@@ -8,21 +8,14 @@ const NavbarMarathon = () => {
         { label: 'Home', path: '/marathon' },
         { label: 'Runners', path: '/marathon/runners' },
         { label: 'Weapons', path: '/marathon/weapons' },
-        { label: 'Abilities', path: '/marathon/runner-abilities' },
         { label: 'Factions', path: '/marathon/factions' },
     ]
 
     return (
-        <nav className="m-navbar">
-            <div className="m-nav-status">
-                <span className="m-nav-id">// MARATHON_OS_v0.9.4</span>
-                <div className="m-nav-connection">
-                    <span className="m-conn-dot" />
-                    <span className="m-conn-label">UPLINK_STABLE</span>
-                </div>
-            </div>
-
-            <ul className="m-nav-links">
+        <>
+            <div className="m-crt-overlay" />
+            <nav className="m-navbar">
+                <ul className="m-nav-links">
                 {links.map((l, index) => (
                     <li key={l.path}>
                         <Link 
@@ -38,7 +31,8 @@ const NavbarMarathon = () => {
             <div className="m-nav-branding">
                 <Link to="/" className="m-back-portal">PORTAL_EXIT ↗</Link>
             </div>
-        </nav>
+            </nav>
+        </>
     )
 }
 

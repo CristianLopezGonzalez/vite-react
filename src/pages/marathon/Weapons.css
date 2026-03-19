@@ -1,6 +1,7 @@
+/* ─── Weapons Page ─── */
 .m-weapons-page {
     min-height: 100vh;
-    background: #161616;
+    background: #0d0d0d;
     padding: 180px 10% 8rem;
     color: #fff;
     font-family: 'JetBrains Mono', monospace;
@@ -10,47 +11,51 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 6rem;
-    border-left: 4px solid #c0fe04;
-    padding-left: 3rem;
+    margin-bottom: 5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #1e1e1e;
 }
 
 .m-header-tag {
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 0.7rem;
+    color: #444;
     letter-spacing: 0.4em;
     display: block;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
     margin-bottom: 0.5rem;
 }
 
 .m-header-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 7rem;
+    font-size: clamp(4rem, 8vw, 8rem);
     color: #fff;
-    margin: 0;
-    line-height: 0.9;
     letter-spacing: 0.02em;
+    line-height: 0.85;
+    margin: 0;
 }
 
 .m-header-count {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 0.5rem;
+    gap: 0.3rem;
     text-align: right;
-    font-family: 'JetBrains Mono', monospace;
 }
 
 .m-count-label {
     font-size: 0.6rem;
     color: #444;
-    letter-spacing: 0.23em;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
 }
 
 .m-count-val {
-    font-size: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.8rem;
     color: #c0fe04;
     font-weight: 700;
+    line-height: 1;
 }
 
 .m-weapons-grid-section {
@@ -60,15 +65,15 @@
 
 .m-weapons-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+    gap: 1.5rem;
 }
 
 /* Skeleton */
 .m-weapons-skeleton {
-    aspect-ratio: 1/1.2;
-    background: #050505;
-    border: 1px solid #111;
+    height: 180px;
+    background: #111;
+    border: 1px solid #1e1e1e;
     position: relative;
     overflow: hidden;
 }
@@ -82,8 +87,13 @@
 }
 
 @keyframes m-shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 /* Error */
@@ -104,7 +114,9 @@
 }
 
 @keyframes m-blink {
-    50% { opacity: 0; }
+    50% {
+        opacity: 0;
+    }
 }
 
 .m-error-info {
@@ -122,17 +134,57 @@
 
 .m-error-text {
     font-size: 0.8rem;
-    color: #666;
+    color: #555;
     margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+@media (max-width: 1200px) {
+    .m-weapons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 1024px) {
-    .m-weapons-page { padding: 130px 5% 5rem; }
+    .m-weapons-page {
+        padding: 140px 5% 5rem;
+    }
+
+    .m-weapons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .m-header-title {
+        font-size: 5rem;
+    }
 }
 
 @media (max-width: 768px) {
-    .m-weapons-page { padding-top: 240px; }
-    .m-weapons-header { flex-direction: column; align-items: flex-start; gap: 2rem; padding-left: 1.5rem; }
-    .m-header-count { align-items: flex-start; }
-    .m-weapons-grid { grid-template-columns: 1fr; }
+    .m-weapons-page {
+        padding-top: 240px;
+    }
+
+    .m-weapons-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .m-header-count {
+        align-items: flex-start;
+    }
+
+    .m-header-title {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .m-weapons-page {
+        padding: 240px 1rem 3rem;
+    }
+
+    .m-header-title {
+        font-size: 3rem;
+    }
 }

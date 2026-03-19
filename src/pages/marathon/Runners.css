@@ -1,56 +1,71 @@
+/* ─── Runners Page ─── */
 .m-runners-page {
     min-height: 100vh;
-    background: #161616;
+    background: #0d0d0d;
     padding: 180px 10% 8rem;
     color: #fff;
     font-family: 'JetBrains Mono', monospace;
 }
 
+/* ─── Page Header ─── */
 .m-runners-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 6rem;
-    border-left: 4px solid #c0fe04;
-    padding-left: 3rem;
+    margin-bottom: 5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #1e1e1e;
+    position: relative;
+}
+
+.m-header-id-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .m-header-tag {
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 0.7rem;
+    color: #444;
     letter-spacing: 0.4em;
     display: block;
-    margin-bottom: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
 }
 
 .m-header-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 7rem;
+    font-size: clamp(4rem, 8vw, 8rem);
     color: #fff;
     letter-spacing: 0.02em;
-    line-height: 0.9;
+    line-height: 0.85;
     margin: 0;
 }
 
 .m-header-count {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+    align-items: flex-end;
+    gap: 0.3rem;
+    text-align: right;
 }
 
 .m-count-label {
     font-size: 0.6rem;
     color: #444;
-    letter-spacing: 0.23em;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
 }
 
 .m-count-val {
-    font-size: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.8rem;
     color: #c0fe04;
     font-weight: 700;
+    line-height: 1;
 }
 
+/* ─── Grid ─── */
 .m-runners-grid-section {
     position: relative;
     z-index: 10;
@@ -58,15 +73,15 @@
 
 .m-runners-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
 }
 
-/* Skeleton */
+/* ─── Skeleton ─── */
 .m-runners-skeleton {
-    aspect-ratio: 3/4;
-    background: #050505;
-    border: 1px solid #111;
+    height: 200px;
+    background: #111;
+    border: 1px solid #1e1e1e;
     position: relative;
     overflow: hidden;
 }
@@ -79,7 +94,17 @@
     animation: m-shimmer 1.5s infinite;
 }
 
-/* Error */
+@keyframes m-shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* ─── Error ─── */
 .m-runners-error {
     padding: 10rem 0;
     display: flex;
@@ -93,6 +118,13 @@
 .m-error-icon {
     font-size: 4rem;
     color: #c0fe04;
+    animation: m-blink 1s steps(1) infinite;
+}
+
+@keyframes m-blink {
+    50% {
+        opacity: 0;
+    }
 }
 
 .m-error-info {
@@ -106,20 +138,63 @@
     color: #c0fe04;
     font-weight: 800;
     letter-spacing: 0.3em;
+    text-transform: uppercase;
 }
 
 .m-error-text {
     font-size: 0.8rem;
-    color: #666;
+    color: #555;
     margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1200px) {
+    .m-runners-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 1024px) {
-    .m-runners-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+    .m-runners-page {
+        padding: 140px 5% 5rem;
+    }
+
+    .m-runners-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .m-header-title {
+        font-size: 5rem;
+    }
 }
 
 @media (max-width: 768px) {
-    .m-runners-page { padding-top: 240px; }
-    .m-runners-header { flex-direction: column-reverse; align-items: flex-end; gap: 2rem; padding-right: 1.5rem; }
-    .m-header-count { align-items: flex-end; }
+    .m-runners-page {
+        padding-top: 240px;
+    }
+
+    .m-runners-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .m-header-count {
+        align-items: flex-start;
+    }
+
+    .m-header-title {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .m-runners-page {
+        padding: 240px 1rem 3rem;
+    }
+
+    .m-header-title {
+        font-size: 3rem;
+    }
 }

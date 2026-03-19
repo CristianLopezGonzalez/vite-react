@@ -1,18 +1,18 @@
 import NavbarMarathon from '../../components/marathon/NavbarMarathon'
 import RunnerCard from '../../components/marathon/RunnerCard'
-import useRunners from '../../hooks/marathon/useRunners.ts'
+import useRunnersWithAbilities from '../../hooks/marathon/useRunnersWithAbilities.ts'
 import '../../styles/MarathonHUD.css'
 import './Runners.css'
 
 const Runners = () => {
-    const { data: runners = [], isLoading, isError } = useRunners()
+    const { data: runners = [], isLoading, isError } = useRunnersWithAbilities()
 
     return (
         <div className="marathon-hud-container">
             <NavbarMarathon />
             <div className="marathon-hud-scan-laser" />
 
-            {/* Permanent HUD Overlays */}
+            {/* HUD Overlays */}
             <div className="marathon-hud-noise" />
             <div className="marathon-hud-vignette" />
             <div className="marathon-hud-edge m-edge-tl" />
@@ -20,7 +20,7 @@ const Runners = () => {
             <div className="marathon-hud-edge m-edge-bl" />
             <div className="marathon-hud-edge m-edge-br" />
 
-            {/* Tactical Status Bar */}
+            {/* Status Bar */}
             <div className="marathon-hud-status-bar">
                 <div className="m-status-left">
                     <span className="m-status-label">SYS_DATABASE:</span>

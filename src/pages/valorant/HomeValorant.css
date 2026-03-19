@@ -127,11 +127,12 @@
 .hv-hero-title-red {
     color: #ff4655;
     position: relative;
-    z-index: -1;
+    z-index: 10;
     margin-top: -0.2em;
     margin-left: 0.1em;
     -webkit-text-stroke: 2px #ff4655;
     color: transparent;
+    display: inline-block;
 }
 
 .hv-hero-desc {
@@ -354,14 +355,35 @@
 }
 
 /* ─── Responsive ─── */
+@media (max-width: 1400px) {
+    .hv-agents-preview { grid-template-columns: repeat(4, 1fr); }
+}
+
 @media (max-width: 1024px) {
+    .hv-section { padding: 8rem 5%; }
+    .hv-section-title { font-size: 4rem; }
     .hv-agents-preview { grid-template-columns: repeat(3, 1fr); }
     .hv-weapons-preview { grid-template-columns: repeat(2, 1fr); }
+    .hv-maps-preview { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
     .hv-hero { padding-left: 2rem; }
-    .hv-hero-title { font-size: 8rem; }
-    .hv-section-title { font-size: 4rem; }
+    .hv-hero-title { font-size: 6rem; }
+    .hv-hero-stats { gap: 3rem; flex-wrap: wrap; }
+    .hv-hero-stat-value { font-size: 3.5rem; }
+    
     .hv-hud-edge, .hv-hud-status { display: none; }
+    
+    .hv-agents-preview { grid-template-columns: repeat(2, 1fr); }
+    .hv-weapons-preview { grid-template-columns: 1fr; }
+    .hv-maps-preview { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+    .hv-hero-title { font-size: 4.5rem; }
+    .hv-hero-desc { font-size: 0.95rem; margin-bottom: 3rem; }
+    .hv-agents-preview { grid-template-columns: 1fr; }
+    
+    .hv-section-header { flex-direction: column; align-items: flex-start; gap: 2rem; }
 }
